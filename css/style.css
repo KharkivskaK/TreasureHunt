@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: rgba(119, 136, 153, 0.5);
+    color: black;
+    padding: 13.3px 0;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    font-size: 20px;
+}
+
+section {
+    padding: 30px;
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+footer button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer button:hover {
+    background-color: #218838;
+}
+
+.social-media a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+
+.image-container {
+    text-align: center; /* Center the image container */
+}
+
+.image-container img {
+    width: 30%;
+    height: 40%;
+    display: inline-block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 13.5%;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+    background: rgba(119, 136, 153, 0.5);
+    z-index: 1;
+}
+
+.section-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+
+    opacity: 0;
+    transform: translateY(20px); /* Moves the element down */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+
+.visible {
+    opacity: 1;
+    transform: none;
+}
+
