@@ -4,21 +4,56 @@
     <meta charset="UTF-8">
     <title>Main page</title>
     <link rel="stylesheet" href="stylesheet.css">
+    <style>
+        body {
+            font-family: Georgia, serif;
+        }
+
+        /*!* Styling for the button *!*/
+        /*#showHuntsButton {*/
+        /*    padding: 10px;*/
+        /*    background-color: #3498db;*/
+        /*    color: #fff;*/
+        /*    cursor: pointer;*/
+        /*}*/
+
+        /*!* Styling for the hunt details *!*/
+        /*#huntDetails {*/
+        /*    margin-top: 20px;*/
+        /*}*/
+    </style>
 </head>
 <body>
+<script>
+    function submitButton(){
+        windows.location.href = "app.html";
+    }
+</script>
 <div class="main">
     <nav>
-
+        <img src="images/treasurehunt.png" class='logoimg' alt="Logo">
         <ul>
-
             <li><a href="">Home</a></li>
             <li><a href="">About</a></li>
-
         </ul>
-
     </nav>
-    <br>
-    <button>Let's get started!</button>
+    <p class="maintext"><b>Enter your team name and get started!</b></p>
+    <div class="container">
+        <form action="main.html" method="post" id="signup">
+            <h1></h1>
+            <div class="field">
+                <label for="name"></label>
+                <input type="text" id="name" name="name" placeholder="What's your team name, fellow?" />
+                <small></small>
+            </div>
+            <input onclick="window.location.href = 'app.html';"type="submit" id = "inputtext" value="Submit">
+        </form>
+    </div>
+    <div id="questList"></div>
+
+    <!-- Display Treasure Hunts with a button -->
+
 </div>
+<img src="images/pirateship.png" class="shipimg" alt="Ship">
 </body>
 </html>
