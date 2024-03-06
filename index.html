@@ -1,47 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
+<!------------------------------------------------------------------------------------------
+	File Name:
+		index.html
+
+	Description:
+		Starting page of the app.
+-------------------------------------------------------------------------------------------->
+
+
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treasure Hunt Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" href="images/map2.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/map2.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="teal">
+  <meta name="apple-mobile-web-app-title" content="Simple app">
+  <meta name="msapplication-TileImage" content="image/map2.png">
+  <meta name="msapplication-TileColor" content="#008080">
+
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/index.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="js/utilities.js"></script>
+
+  <title>Treasure Hunt Game</title>
 </head>
+
 <body>
 
-<header>
-  <h1>TREASURE HUNT GAME</h1>
-  <p>Welcome to our adventure!</p>
-</header>
 
-<div class="image-container">
-  <img src="images/map.png" alt="Pirate">
+<div>
+  <header>
+    <h1>TREASURE HUNT GAME</h1>
+    <p>Welcome to our adventure!</p>
+
+    <button id="menuButton">☰</button> <!-- Burger Menu Button -->
+    <!-- Navigation bar to be redirected to three different pages  -->
+    <div id="burgerMenu">
+      <nav>
+        <ul>
+          <li><a href="testing.html">Testing</a></li>
+          <li><a href="notes.html">Team Notes</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="image-container">
+    <img src="images/map.png" alt="Pirate">
+  </div>
+
+  <section class="team text-center">
+    <img src="images/map2.png" alt="Icon 1" class="section-icon">
+    <h2>Our Team</h2>
+    <p> Kateryna Kharkivska<br><br>
+      Raed el hajj<br><br>
+      Tim Stukalin<br><br>
+      Marios Katsouris</p>
+  </section>
+
+  <section class="aims text-center">
+    <img src="images/hat.png" alt="Icon 1" class="section-icon">
+    <h2>Our Aims</h2>
+    <p>To provide an engaging treasure hunt game that encourages exploration and learning.</p>
+  </section>
+
+  <section class="social-media text-center">
+    <img src="images/path.png" alt="Icon 1" class="section-icon">
+    <h2>Follow Us</h2>
+    <a href="https://twitter.com/TeamA3_">Twitter</a>
+  </section>
+
+  <footer class="text-center">
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="">
+              <h4>Resume or start over?</h4>
+            </div>
+            <button type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modalContainer">
+              <p>A stored session already exists. Would you like to resume it, or start a new one?</p>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <div class="modalContainer">
+              <button class="THCButton" onClick="window.location.href='currentQuestion.html';">
+                Resume
+              </button>
+              <button class="THCButton" onClick="window.location.href = 'app.html';">
+                Start Over
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="THCButton startButton" name="startBtn" onClick="window.location.href='start.html';">
+      Start the Hunt!
+    </button>
+  </footer>
+
 </div>
 
-<section class="team">
-  <img src="images/map2.png" alt="Icon 1" class="section-icon">
-  <h2>Our Team</h2>
-  <p> Kateryna Kharkivska<br><br>
-    Raed el hajj<br><br>
-    Tim Stukalin<br><br>
-    Marios Katsouris</p>
-</section>
+<script>
+  function cookieFinder() {
+    if (cookieExists("THCWebApp-sessionID")) showModal("sessionModal");
+    else window.location.href = "selectCategory.html";
+  }//end cookieFinder()
+</script>
 
-<section class="aims">
-  <img src="images/hat.png" alt="Icon 1" class="section-icon">
-  <h2>Our Aims</h2>
-  <p>To provide an engaging treasure hunt game that encourages exploration and learning.</p>
-</section>
 
-<section class="social-media">
-  <img src="images/path.png" alt="Icon 1" class="section-icon">
-  <h2>Follow Us</h2>
-  <a href="https://twitter.com/TeamA3_">Twitter</a>
-</section>
-
-<footer>
-  <button onclick="startGame()">Start the Hunt!</button>
-</footer>
-
-<script src="js/index.js"></script>
 </body>
 </html>

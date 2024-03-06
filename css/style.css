@@ -5,13 +5,17 @@ body {
     text-align: center;
 }
 
-header {
+div {
     background-color: rgba(119, 136, 153, 0.5);
+}
+
+header {
     color: black;
-    padding: 13.3px 0;
+    padding: 13.3px;
     text-align: center;
     width: 100%;
 }
+
 
 header h1 {
     margin: 0;
@@ -23,7 +27,7 @@ header p {
 
 section {
     padding: 30px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid black;
     font-size: 20px;
     margin-top: 30px;
 }
@@ -31,20 +35,6 @@ section {
 footer {
     margin-top: 20px;
     padding: 20px;
-}
-
-footer button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #28a745;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-footer button:hover {
-    background-color: #218838;
 }
 
 .social-media a {
@@ -59,6 +49,7 @@ footer button:hover {
 
 .image-container {
     text-align: center; /* Center the image container */
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .image-container img {
@@ -75,7 +66,6 @@ footer button:hover {
     left: 0;
     right: 0;
     bottom: 30%;
-    background: rgba(119, 136, 153, 0.5);
     z-index: 1;
 }
 
@@ -95,17 +85,160 @@ footer button:hover {
     transform: none;
 }
 
-/*creates an animated loader*/
-.loader {
-    border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite;
+#menuButton {
+    display: block;
+    font-size: 24px; /* Size of the burger icon */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    background: none;
+    border: none;
+    color: black; /* Color of the burger icon */
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+#burgerMenu {
+    display: none;
+    padding: 8px;
 }
+
+/* Styling for the navigation bar list */
+nav ul {
+    list-style: none;
+    padding: 20px;
+    margin: 20px;
+    display: block;
+    justify-content: space-around;
+    position: absolute;
+    left: 30px;
+}
+
+/* Styling for navigation links */
+nav a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 20px;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 700px) {
+    .image-container img {
+        width: 80%; /* Larger relative size for smaller screens */
+    }
+}
+
+
+
+
+
+
+.THCButton {
+    background-color: #28a745;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px black;
+    transition: 1s;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+
+.THCButton:hover {
+    background-color: #218838;
+}
+
+.THCButton:active {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+@media only screen and (min-width: 320px) {
+    .THCButton {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .THCButton {
+        padding: 20px;
+        font-size: 130%;
+    }
+}
+
+
+
+.modal {
+    z-index: 3;
+    display: none;
+    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin: auto;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    width: 600px;
+}
+
+.closebtn {
+    text-decoration: none;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.closebtn:hover, .closebtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        margin: 0 10px;
+        width: auto !important;
+    }
+
+    .modal {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 500px;
+    }
+
+    .modal {
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 993px) {
+    .modal-content {
+        width: 900px;
+    }
+}
+
+.modalContainer {
+    padding: 0.01em 16px;
+}
+
+.modalContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+

@@ -1,0 +1,219 @@
+<!------------------------------------------------------------------------------------------
+	File Name:
+		currentQuestion.html
+	Description:
+		Displays the current question with a multiple choice or text answer form.
+-------------------------------------------------------------------------------------------->
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="icon" href="images/map2.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="images/map2.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="teal">
+  <meta name="apple-mobile-web-app-title" content="Simple app">
+  <meta name="msapplication-TileImage" content="image/map2.png">
+  <meta name="msapplication-TileColor" content="#008080">
+  <title>Treasure Hunt Game</title>
+
+  <script> document.title = getCookie(COOKIE_CATEGORY_NAME).split('+').join(' ');</script>
+  <link href="css/thc-style.css" rel="stylesheet" type="text/css"/>
+<!--  <link rel="stylesheet" href="css/style.css">-->
+  <script src="js/utilities.js"></script>
+  <script src="js/getScoreboard.js"></script>
+  <script src="js/updateLocation.js"></script>
+  <script src="js/answerQuestion.js"></script>
+  <script src="js/cookies.js"></script>
+</head>
+
+<body onload="updateQuestion(); client_updateLocation_Auto(); updateScore(); server_updateLocation_Auto(); updateLocation(); GLOBAL_LocationInitialized = true;">
+
+<div id="loader"></div>
+
+<div id="container" style="display:none; margin-top:0px;">
+
+
+
+  <header>
+    <h1>TREASURE HUNT GAME</h1>
+    <p>Welcome to our adventure!</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="">Help</a></li>
+        <li><a href="">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div class="custom-header">
+    <div>
+      <script>
+        var playerName = getCookie(COOKIE_PLAYER_NAME);
+        var sessionID = getCookie(COOKIE_SESSION_ID);
+        document.write("<span id='playerName'> <b>Player: </b><small>" + playerName + "</small></span>");
+      </script>
+    </div>
+
+
+    <div class="skip-div">
+      <div class="score-div">
+        <span><b>Score</b></span>
+        <span id="score">0</span>
+        <div class="clearFloat"></div>
+      </div>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="skipBtn" name="skipBtn"
+              type="button" value="Skip">Skip</button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4>Skip question?</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="text-center">
+                <p>Are you sure you want to skip the current question?</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                      onClick="hideModal('skipQuestion');">Cancel
+              </button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close"
+                      onClick="skipQuestion(); hideModal('skipQuestion');">Skip
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="content" align="center">
+
+    <div class="instructions">
+      <div class=""
+           style="background-color: rgb(241, 241, 241); border: 1px solid grey; border-radius: 10px; margin: 20px 0px; width: 70%;">
+        <h5 id="question" class="text-center p-2"></h5>
+        <div id="isLocationRelevant"><small>Requires Location!</small></div>
+        <div class="clearFloat"></div>
+      </div><!--bubble-->
+    </div><!--instructions-->
+
+    <div class="custom-opions-form">
+      <form name="mcqForm" id="mcqForm">
+        <input id="answerABtn" name="answerABtn" type="button" value="A" class="custom-opions MCQ"
+               onclick="answerQuestion('A')"/>
+        <input id="answerBBtn" name="answerBtn" type="button" value="B" class="custom-opions MCQ"
+               onclick="answerQuestion('B')"/>
+        <input id="answerCBtn" name="answerCBtn" type="button" value="C" class="custom-opions MCQ"
+               onclick="answerQuestion('C')"/>
+        <input id="answerDBtn" name="answerDBtn" type="button" value="D" class="custom-opions MCQ"
+               onclick="answerQuestion('D')"/>
+      </form>
+    </div>
+
+    <form name="textForm" id="textForm" onsubmit="filterAnswer(document.getElementById('answerText'));">
+      <input class="custom-input text" id="answerText" type="text" name="answerText" placeholder="Answer here..."
+             size="30"
+             required/>
+      <br>
+      <input id="submitBtnText" class="btn btn-primary" name="submitBtnText" type="button" value="Submit"
+             onClick="filterAnswer(document.getElementById('answerText'));"/>
+    </form>
+
+    <form class="" name="integerForm" id="integerForm"
+          onsubmit="filterAnswer(document.getElementById('answerInteger'));">
+      <input class="custom-input text" id="answerInteger" type="number" name="answerInteger"
+             placeholder="Answer here..." size="30"
+             pattern="[0-9]" required/>
+      <br>
+      <input id="submitBtnInteger" class="btn btn-primary" name="submitBtnInteger" type="button" value="Submit"
+             onClick="filterAnswer(document.getElementById('answerInteger'));"/>
+    </form>
+
+    <form name="numberForm" id="numberForm" onsubmit="filterAnswer(document.getElementById('answerNumber'));">
+      <input class="custom-input text" id="answerNumber" type="number" name="answerNumber" placeholder="Answer here..."
+             size="30"
+             required/>
+      <input id="submitBtnNumber" class="btn btn-primary" name="submitBtnNumber" type="button" value="Submit"
+             onClick="filterAnswer(document.getElementById('answerNumber'));"/>
+    </form>
+
+    <div class="boolean-div">
+      <form name="booleanForm" id="booleanForm" class="custom-boolean">
+        <input id="trueBtn" name="trueBtn" type="" value="True" class="custom-true"
+               onClick="answerQuestion(true);"/>
+        <input id="falseBtn" name="falseBtn" type="button" value="False" class="custom-false"
+               onClick="answerQuestion(false);"/>
+      </form>
+    </div>
+    <script>
+      function filterAnswer(e) {
+        let answer = e.value;
+        if (answer === "" || answer == null || answer === undefined) {
+          createSnackbar("Please provide an answer");
+        } else {
+          //Check the case where we need an integer to be entered, but we get a decimal:
+          if (document.getElementById("integerForm").style.display == "inline") {
+            if (answer.indexOf(".") > -1) {
+              createSnackbar("Please provide an integer number. (1, 2, 3...)");
+              return;
+            }
+          }
+          answerQuestion(answer);
+        }
+      }
+    </script>
+
+    <!-- Scoreboard pop-up -->
+    <div id="scoreboardPopup" class="modal">
+      <div class="modal-content animate-top card-8">
+        <header class="modalContainer hasBackground">
+      <span onclick="hideModal('scoreboardPopup');"
+            class="closebtn">&times;</span>
+          <h2>Scoreboard</h2>
+        </header>
+        <div class="modalContainer" style="padding:0;">
+          <div class="container">
+            <ol id="scoreboardList"></ol>
+          </div>
+        </div>
+        <div class="scoreboardBottomPadding"></div>
+      </div>
+    </div>
+
+    <!-- Skip Question Modal -->
+    <div id="skipQuestion" class="modal">
+      <div class="modal-content animate-top card-8">
+        <header class="modalContainer hasBackground">
+      <span onclick="hideModal('skipQuestion');"
+            class="closebtn">&times;</span>
+          <h2>Skip question?</h2>
+        </header>
+        <div class="modalContainer">
+          <p>Are you sure you want to skip the current question?</p>
+        </div>
+        <footer class="modalContainer">
+          <button class="THCButton" onClick="hideModal('skipQuestion');">Cancel</button>
+          <button class="THCButton" onClick="skipQuestion(); hideModal('skipQuestion');">Skip</button>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+</div> <!--CONTAINER-->
+</body>
+</html>
