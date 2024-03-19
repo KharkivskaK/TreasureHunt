@@ -1,0 +1,259 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+div {
+    background-color: rgba(119, 136, 153, 0.5);
+}
+
+header {
+    color: black;
+    padding: 13.3px;
+    text-align: center;
+    width: 100%;
+}
+
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    font-size: 20px;
+}
+
+section {
+    padding: 30px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.social-media a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+
+.image-container {
+    text-align: center; /* Center the image container */
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.image-container img {
+    width: 30%;
+    height: 40%;
+    display: inline-block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 13.5%;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+    z-index: 1;
+}
+
+.section-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+
+.visible {
+    opacity: 1;
+    transform: none;
+}
+
+#menuButton {
+    display: block;
+    font-size: 34px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+    position: fixed;
+    top:30px;
+    left: 30px;
+}
+
+#burgerMenu {
+    display: none;
+    padding: 30px;
+}
+
+/* Styling for the navigation bar list */
+nav ul {
+    list-style: none;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    left: 30px;
+    flex-wrap: wrap;
+}
+
+/* Styling for navigation links */
+nav a {
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-size: 20px;
+    padding: 20px;
+    position: fixed;
+    top: 113px;
+}
+
+ul li {
+    list-style: none;
+    text-align: center;
+    display: inline-block;
+    position: fixed;
+}
+
+
+ul li a:hover {
+    color: darkblue ;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 700px) {
+    .image-container img {
+        width: 80%; /* Larger relative size for smaller screens */
+    }
+}
+
+
+.THCButton {
+    background-color: #28a745;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px black;
+    transition: 1s;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+}
+
+.THCButton:hover {
+    background-color: #218838;
+}
+
+.THCButton:active {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+@media only screen and (min-width: 320px) {
+    .THCButton {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .THCButton {
+        padding: 20px;
+        font-size: 130%;
+    }
+}
+
+
+
+.modal {
+    z-index: 3;
+    display: none;
+    padding-top: 100px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    margin: auto;
+    position: relative;
+    padding: 0;
+    outline: 0;
+    width: 600px;
+}
+
+.closebtn {
+    text-decoration: none;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.closebtn:hover, .closebtn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer
+}
+
+@media (max-width: 600px) {
+    .modal-content {
+        margin: 0 10px;
+        width: auto !important;
+    }
+
+    .modal {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 500px;
+    }
+
+    .modal {
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 993px) {
+    .modal-content {
+        width: 900px;
+    }
+}
+
+.modalContainer {
+    padding: 0.01em 16px;
+}
+
+.modalContainer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+

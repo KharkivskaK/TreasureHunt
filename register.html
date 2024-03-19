@@ -1,0 +1,113 @@
+<!------------------------------------------------------------------------------------------
+	File Name: 
+		register.html
+	Description:
+		Shows a form that allows a user to register a name and e-mail to play.
+-------------------------------------------------------------------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="images/map2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/map2.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="teal">
+    <meta name="apple-mobile-web-app-title" content="Simple app">
+    <meta name="msapplication-TileImage" content="image/map2.png">
+    <meta name="msapplication-TileColor" content="#008080">
+
+    <link rel="stylesheet" href="css/thc-style.css">
+    <title>TREASURE HUNT GAME - Register</title>
+    <script type="text/javascript" src="js/utilities.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
+
+</head>
+
+<body>
+
+<div id="overlay" class="overlay" onclick="hideContent()"></div>
+
+<div id="container" style="display:block">
+
+    <header>
+        <h1>TREASURE HUNT GAME</h1>
+        <p>Welcome to our adventure!</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#help" onclick="showContent('help')">Help</a></li>
+                <li><a href="#about" onclick="showContent('about')">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="help" class="box">
+        <div class="box-content">
+            <img src="images/help.png" alt="Help Icon" class="box-icon">
+            <div>
+                <h3>Help</h3>
+                <p>Answer Questions: As you embark on your treasure hunt, you'll encounter various questions.</p>
+                <p>Use your knowledge and wit to answer them correctly and move closer to the treasure.</p>
+                <p>Use Hints: Stuck on a question? Use hints (if available) to get clues that will help you answer the questions.</p>
+                <p>Collect Treasures: Each correct answer will guide you to different treasures.</p>
+                <p>Collect as many as you can!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="box">
+        <div class="box-content">
+            <img src="images/about.png" alt="Help Icon" class="box-icon2">
+            <div>
+        <h3>About</h3>
+        <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
+        <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="instructions">
+        <p class="bubble" id="registerBubble"></p>
+        <div class="clearFloat"></div>
+    </div>
+
+    <div class="registerForm">
+
+        <form name="registerPiratesForm" class="" id="registerPiratesForm" action="startGame.html" method="get">
+
+            <p><input id="firstPirateName" type="text" title="Name can only contain letters, numbers, - and ."
+                      name="firstPirateName" pattern="[a-zA-Z0-9.-]{1,20}" placeholder="Name..." maxlength="20"
+                      class="custom-input"
+                      required></p>
+
+            <p><input id="firstPirateEmail" type="email" title="Email should be in the format example@domain.com"
+                      pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,24}$" name="firstPirateEmail"
+                      placeholder="E-Mail..." maxlength="60" class="custom-input" required></p>
+
+            <p><select class="custom-input" id="genderSelect" name="gender" placeholder="Select gender..." required>
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+                <option value="n">Would rather not say</option>
+            </select></p>
+
+            <input type="hidden" id="cUUIDField" name="categoryUUID"/>
+            <input type="hidden" id="cNameField" name="categoryName"/>
+
+            <script>
+                document.getElementById("cUUIDField").value = categorySelectedUUID;
+                document.getElementById("cNameField").value = categorySelectedName;
+            </script>
+
+            <p class="btn-div"><input class="btn btn-primary" type="submit" name="submitPirateNames"
+                                      value="Find the Treasure!"></p>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

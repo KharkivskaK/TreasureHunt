@@ -7,8 +7,8 @@
 -------------------------------------------------------------------------------------------->
 
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,12 +20,12 @@
   <meta name="msapplication-TileImage" content="image/map2.png">
   <meta name="msapplication-TileColor" content="#008080">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/index.css">
   <script src="js/index.js"></script>
   <script src="js/cookies.js"></script>
   <script src="js/utilities.js"></script>
 
-  <title>Treasure Hunt Game</title>
+  <title>TREASURE HUNT GAME</title>
 </head>
 
 <body>
@@ -41,8 +41,8 @@
     <div id="burgerMenu">
       <nav>
         <ul>
-          <li><a href="testing.html">Testing</a></li>
-          <li><a href="notes.html">Team Notes</a></li>
+          <li><a href="">Testing</a></li>
+          <li><a href="">Team Notes</a></li>
         </ul>
       </nav>
     </div>
@@ -75,38 +75,19 @@
 
   <footer class="text-center">
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="">
-              <h4>Resume or start over?</h4>
-            </div>
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="modalContainer">
-              <p>A stored session already exists. Would you like to resume it, or start a new one?</p>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <div class="modalContainer">
-              <button class="THCButton" onClick="window.location.href='currentQuestion.html';">
-                Resume
-              </button>
-              <button class="THCButton" onClick="window.location.href = 'app.html';">
-                Start Over
-              </button>
-            </div>
-          </div>
+    <!-- Custom Modal -->
+    <div id="customModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close-btn" onclick="hideModal()">&times;</span>
+        <h4>Resume or start over?</h4>
+        <p>A stored session already exists. Would you like to resume it, or start a new one?</p>
+        <div class="modal-buttons">
+          <button class="THCButton" onclick="location.href='question.html';">Resume</button>
+          <button class="THCButton" onclick="location.href='start.html';">Start Over</button>
         </div>
       </div>
     </div>
+
     <button type="button" class="THCButton startButton" name="startBtn" onClick="window.location.href='start.html';">
       Start the Hunt!
     </button>
@@ -117,8 +98,9 @@
 <script>
   function cookieFinder() {
     if (cookieExists("THCWebApp-sessionID")) showModal("sessionModal");
-    else window.location.href = "selectCategory.html";
-  }//end cookieFinder()
+    else window.location.href = "start.html";
+  }
+  cookieFinder();
 </script>
 
 

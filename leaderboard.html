@@ -1,62 +1,61 @@
+<!------------------------------------------------------------------------------------------
+	File Name: 
+		leaderboard.html
+	Description:
+		Shows the scoreboard after the user has finished the quiz.
+-------------------------------------------------------------------------------------------->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treasure Hunt Game</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/stylesheet.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="images/map2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/map2.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="teal">
+    <meta name="apple-mobile-web-app-title" content="Simple app">
+    <meta name="msapplication-TileImage" content="image/map2.png">
+    <meta name="msapplication-TileColor" content="#008080">
+
+    <link href="css/thc-style2.css" rel="stylesheet" type="text/css"/>
+<!--    <link rel="stylesheet" href="css/style.css">-->
+    <title>TREASURE HUNT GAME - Scoreboard</title>
+    <script src="js/utilities.js"></script>
+    <script> var sessionID = fetchGetVariable("sessionID"); </script>
+    <script src="js/cookies.js"></script>
+    <script src="js/getScoreboard.js"></script>
 </head>
 
-<body>
+<body onload="getScoreboard();">
 
-<div class="main">
-    <nav>
-        <img src="images/treasurehunt.png" class='logoimg' alt="Logo">
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">About</a></li>
+<div id="loader"></div>
+
+<div id="container" align='center'>
+
+    <header>
+        <h1>TREASURE HUNT GAME</h1>
+        <p>Welcome to our adventure!</p>
+    </header>
+
+    <div class="header">
+        <ul class="topNav">
+            <li style="float:right"><a href="index.html">Play Again</a></li>
+            <li style="float:right"><a onclick="location.reload();">Reload</a></li>
+            <div class="clearFloat"></div>
         </ul>
-    </nav>
-    <p class="maintext"><b>Treasure Hunt Game Leaderboard</b></p>
-
-    <!--<div id="buttonReload" class="button" onclick="handleList(this)">Reload</div>-->
-    <div id="loader" class="loader"></div>
-    <table id="test-results-table">
-        <tr>
-            <th>Name</th>
-            <th>Score</th>
-            <th>Time</th>
-        </tr>
-    </table>
-
-    <div id="message" class="infoMessage">
-        No messages
     </div>
-</div>
 
-<script src="js/index.js"></script>
-<script>
-    window.onload = () => {
-        if (isTest()) {
-            // form the test service url
-            let url = TH_TEST_URL + "leaderboard?size=10&sorted";
-            getLeaderBoard(url);
-        } else {
-            // form the actual TH service url
-            let session = getSession();
-            if (session != null) {
-                let url = TH_BASE_URL + "leaderboard?limit=10&sorted&session=" + session;
-                getLeaderBoard(url);
-            } else {
-                let treasureHuntId = getTreasureHuntId();
-                if (treasureHuntId != null) {
-                    let url = TH_BASE_URL + "leaderboard?limit=10&sorted&treasure-hunt-id=" + treasureHuntId;
-                    getLeaderBoard(url);
-                }
-            }
-        }
-    };
-</script>
+    <div class="score-form-div">
+        <p id="message" style="font-weight:700"></p>
+    </div>
+
+    <h1> Scoreboard </h1>
+    <div class="score-form-div">
+        <ol id="scoreboardList"></ol>
+    </div>
+</div> <!--CONTAINER-->
+
 </body>
 </html>

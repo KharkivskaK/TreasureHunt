@@ -20,14 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function burgerMenu() {
-    document.getElementById('menuButton').addEventListener('click', function () {
-        var navLinks = document.getElementById('burgerMenu');
-        if (navLinks.style.display === 'block') {
-            navLinks.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function() {
+    var menuButton = document.getElementById('menuButton');
+    var burgerMenu = document.getElementById('burgerMenu');
+
+    menuButton.addEventListener('click', function() {
+        // Toggle the display property between 'block' and 'none'
+        if (burgerMenu.style.display === 'block') {
+            burgerMenu.style.display = 'none';
         } else {
-            navLinks.style.display = 'block';
+            burgerMenu.style.display = 'block';
         }
     });
+});
+
+function showModal() {
+    document.getElementById('customModal').style.display = 'block';
 }
-burgerMenu();
+
+function hideModal() {
+    document.getElementById('customModal').style.display = 'none';
+}
+
+// Optional: Close the modal if the user clicks outside of it
+window.onclick = function(event) {
+    var modal = document.getElementById('customModal');
+    if (event.target == modal) {
+        hideModal();
+    }
+
+}
+

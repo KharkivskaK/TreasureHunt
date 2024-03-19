@@ -156,3 +156,40 @@ function isAndroid() {
 	var isAndroid = ua.indexOf("android") > -1;
 	if(isAndroid) document.getElementById("gappsBadge").style.display = "block";
 }
+
+function showContent(id) {
+    document.getElementById('overlay').style.display = 'block';
+    var boxes = document.getElementsByClassName('box');
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].style.display = 'none';
+    }
+    document.getElementById(id).style.display = 'block';
+}
+
+function hideContent() {
+    document.getElementById('overlay').style.display = 'none';
+    var boxes = document.getElementsByClassName('box');
+    for (var i = 0; i < boxes.length; i++) {
+        boxes[i].style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.1 // Adjust based on when you want the animation to start
+    });
+
+    // Target the images with both classes
+    const boxIcons = document.querySelectorAll('.box-content .box-icon, .box-content .box-icon2');
+    boxIcons.forEach(icon => {
+        observer.observe(icon);
+    });
+});

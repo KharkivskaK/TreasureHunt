@@ -64,7 +64,7 @@ function updateQuestion() {
 
                 //If quiz all questions answered, redirect:
 			    if (jsonData.currentQuestionIndex >= jsonData.numOfQuestions) {
-                    window.location.href="scoreboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME); //TODO
+                    window.location.href="leaderboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME); //TODO
                 }
 
                 //Show the container and question:
@@ -126,7 +126,7 @@ function updateQuestion() {
                 }
                 var errorStr = jsonData.status + ":\n" + errorMessages;
                 alert(errorStr);
-                document.location = "selectCategory.html";
+                document.location = "start.html";
 			}//end if not OK
 
             //Hide the loader and display the page:
@@ -180,7 +180,7 @@ function answerQuestion(answer) {
                         updateQuestion();
                         setTimeout(function () {
                         }, 1000);
-                        window.location.href = "scoreboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
+                        window.location.href = "leaderboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
                     }
 
                     //Not correct, Not completed:
@@ -194,7 +194,7 @@ function answerQuestion(answer) {
                         createSnackbar(jsonData.message);
                         setTimeout(function () {
                         }, 1000);
-                        window.location.href = "scoreboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
+                        window.location.href = "leaderboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
                     }
 
                     // else if (jsonData.feedback == "unknown or incorrect location") { //TODO LOCATION?
@@ -214,7 +214,7 @@ function answerQuestion(answer) {
                     createSnackbar(errorStr);
                     setTimeout(function () {
                     }, 1000);
-                    window.location.href = "scoreboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
+                    window.location.href = "leaderboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
                 }
             } //end if ready
         }; //end function()
@@ -226,40 +226,66 @@ function answerQuestion(answer) {
 /**
  * Makes a server request to skip the current question.
  */
-function skipQuestion() {
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			var jsonData = JSON.parse(xhttp.responseText);
-			if (jsonData.status == "OK") {
-
-			    updateScore();
-
-				//Check if completed:
-                if (!jsonData.completed) {
-                    updateQuestion();
-                    createSnackbar("Skipped question", 2000);
-                }
-                else {
-                    updateQuestion();
-                    window.location.href="scoreboard.html?sessionID=" + sessionID + "&playerName=" + getCookie(COOKIE_PLAYER_NAME);
-                }
-			}//end if ok
-			else {
-                var errorMessages = "";
-                for (var i = 0; i < jsonData.errorMessages.length; i++) {
-                    errorMessages += jsonData.errorMessages[i] + "\n";
-                }
-                var errorStr = jsonData.status + ":\n" + errorMessages;
-                createSnackbar(errorStr);
-                setTimeout(function() { }, 1000);
-			}//end if not OK
-		}//end if ready
-	};//end if function()
-	xhttp.open("GET", API_SKIP + "?session=" + sessionID, true);
-	xhttp.send();
-	resetAllAnswerFields();
+function showModal() {
+    document.getElementById('customModal').style.display = 'block';
 }
+
+function hideModal() {
+    document.getElementById('customModal').style.display = 'none';
+}
+
+function skipQuestion() {
+    hideModal(); // Ensure the modal is hidden once the skip action is initiated.
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            var jsonData = JSON.parse(xhttp.responseText);
+            if (jsonData.status === "OK") {
+                updateScore(); // Assume this function updates the UI to reflect the new score.
+
+                // Check if the game or quiz is completed.
+                if (!jsonData.completed) {
+                    updateQuestion(); // Load the next question.
+                    createSnackbar("Skipped question", 2000); // Provide user feedback.
+                } else {
+                    // If the game is completed, redirect to the leaderboard.
+                    window.location.href = "leaderboard.html?sessionID=" + encodeURIComponent(sessionID) + "&playerName=" + encodeURIComponent(getCookie(COOKIE_PLAYER_NAME));
+                }
+            } else {
+                // Handle errors.
+                var errorMessages = jsonData.errorMessages.join("\n");
+                alert("Error: " + errorMessages); // Consider using a more user-friendly error display method.
+            }
+        }
+    };
+    xhttp.open("GET", API_SKIP + "?session=" + encodeURIComponent(sessionID), true);
+    xhttp.send();
+}
+
+function createSnackbar(message, duration) {
+    // Implement or ensure this function displays a temporary message to the user.
+    console.log(message); // Placeholder implementation. Replace with actual UI update logic.
+}
+
+
+function filterAnswer(e) {
+    let answer = e.value;
+    if (answer === "" || answer == null || answer === undefined) {
+        createSnackbar("Please provide an answer");
+    } else {
+        //Check the case where we need an integer to be entered, but we get a decimal:
+        if (document.getElementById("integerForm").style.display == "inline") {
+            if (answer.indexOf(".") > -1) {
+                createSnackbar("Please provide an integer number. (1, 2, 3...)");
+                return;
+            }
+        }
+        answerQuestion(answer);
+    }
+}
+
+
 
 /**
  * Resets all text-based fields:

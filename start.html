@@ -1,18 +1,15 @@
 <!------------------------------------------------------------------------------------------
 	File Name: 
-		selectCategory.html
+		start.html
 	Description:
 		Allows a user to select a quiz category from a given list.
 -------------------------------------------------------------------------------------------->
 
-
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>TREASURE HUNT GAME - Select a Category</title>
-    <link rel="stylesheet" href="css/start.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="icon" href="images/map2.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="images/map2.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +17,13 @@
     <meta name="apple-mobile-web-app-title" content="Simple app">
     <meta name="msapplication-TileImage" content="image/map2.png">
     <meta name="msapplication-TileColor" content="#008080">
+
+    <title>TREASURE HUNT GAME - Select a Category</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
     <script src="js/utilities.js"></script>
+    <script src="js/start.js"></script>
 
 </head>
 
@@ -28,8 +31,9 @@
 
 <div id="loader"></div>
 
-<div id="container">
+<div id="overlay" class="overlay" onclick="hideContent()"></div>
 
+<div id="container">
 
     <header>
         <h1>TREASURE HUNT GAME</h1>
@@ -37,11 +41,36 @@
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Help</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="#help" onclick="showContent('help')">Help</a></li>
+                <li><a href="#about" onclick="showContent('about')">About</a></li>
             </ul>
         </nav>
     </header>
+
+    <div id="help" class="box">
+        <div class="box-content">
+            <img src="images/help.png" alt="Help Icon" class="box-icon">
+            <div>
+                <h3>Help</h3>
+                <p>Answer Questions: As you embark on your treasure hunt, you'll encounter various questions.</p>
+                <p>Use your knowledge and wit to answer them correctly and move closer to the treasure.</p>
+                <p>Use Hints: Stuck on a question? Use hints (if available) to get clues that will help you answer the questions.</p>
+                <p>Collect Treasures: Each correct answer will guide you to different treasures.</p>
+                <p>Collect as many as you can!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="about" class="box">
+        <div class="box-content">
+            <img src="images/about.png" alt="Help Icon" class="box-icon2">
+            <div>
+                <h3>About</h3>
+                <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
+                <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
+            </div>
+        </div>
+    </div>
 
 
     <div id="content" align="center">
@@ -51,88 +80,6 @@
             <ul class="categoryList" id="categoryList"></ul>
 
         </div>
-
-        <script>
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-
-                var displayedCategories = 0;
-                var categoryList = document.getElementById("categoryList");
-
-                if (xhttp.readyState === 4 && xhttp.status === 200) {
-                    var jsonData = JSON.parse(xhttp.responseText);
-                    if (jsonData.status == "OK") {
-                        var numOfCategories = jsonData.treasureHunts.length;
-                        const dateTimeNow = (new Date).getTime();
-
-                        for (var i = 0; i < numOfCategories; i++) {
-
-                            var currentItem = jsonData.treasureHunts[i];
-                            var startsOnTime = currentItem.startsOn;
-                            var endsOnTime = currentItem.endsOn;
-
-                            var isPublic = jsonData.treasureHunts[i].visibility === "PUBLIC";
-
-                            //Only show categories in the list if they are public:
-                            if (isPublic) {
-
-                                displayedCategories++;
-
-                                //Display the category as joinable if its start time is now or later from now and its end time is now or before now:
-                                if ((dateTimeNow >= startsOnTime) && (dateTimeNow <= endsOnTime)) {
-                                    //Add to select element
-                                    var a = document.createElement("a");
-                                    var newItem = document.createElement("li");
-                                    a.textContent = currentItem.name;
-                                    a.setAttribute('href', "registration.html?cuuid=" + currentItem.uuid + "&cname=" + currentItem.name);
-                                    newItem.appendChild(a);
-                                    categoryList.appendChild(newItem);
-                                }//end if selectable entry
-
-                                //Display the category as non-joinable if its start time is later than now:
-                                else if (startsOnTime > dateTimeNow) {
-                                    var newItem = document.createElement("li");
-                                    newItem.className += "disabled disabled-button";
-                                    var text = document.createTextNode(currentItem.name);
-                                    newItem.appendChild(text);
-                                    document.getElementById("categoryList").appendChild(newItem);
-                                }//end if non-selectable entry
-
-                                //Otherwise just show a console message, no need to show the category:
-                                else {
-                                    console.log("Found an expired Treasure hunt: " + currentItem.name);
-                                }
-
-                            }//end if isPublic
-                        }//end for each category
-
-                        //If no categories have been found, show a 'No categories' message:
-                        if (displayedCategories < 1) {
-                            var noCategoriesItem = document.createElement("li");
-                            noCategoriesItem.style.color = "#888";
-                            noCategoriesItem.innerHTML = "<i>No categories</i>";
-                            categoryList.appendChild(noCategoriesItem);
-                        }
-
-                    } else if (statusItem !== "OK") {
-                        createSnackbar('! Problem while fetching the categories (status code: ' + xhttp.status + ') !');
-                    } else {
-                        createSnackbar('! Problem while contacting the server (status code: ' + xhttp.status + ') !');
-                    }
-
-                    document.getElementById("loader").style.display = "none";
-                    document.getElementById("container").style.display = "block";
-                } else if (xhttp.readyState === 4) {
-                    createSnackbar('! Problem while contacting the server (ready state: ' + xhttp.readyState + ', status code: ' + xhttp.status + ') !');
-                    document.getElementById("loader").style.display = "none";
-                    document.getElementById("container").style.display = "block";
-                }
-            };
-            xhttp.open("GET", API_SELECT_CATEGORY, true);
-            xhttp.send();
-
-        </script>
 
     </div> <!--CONTENT-->
 
