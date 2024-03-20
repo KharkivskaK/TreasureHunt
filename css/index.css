@@ -85,7 +85,7 @@ footer {
     transform: none;
 }
 
-#menuButton {
+/*#menuButton {
     display: block;
     font-size: 34px;
     cursor: pointer;
@@ -100,42 +100,98 @@ footer {
 #burgerMenu {
     display: none;
     padding: 30px;
+    margin: auto;
 }
 
-/* Styling for the navigation bar list */
+!* Styling for the navigation bar list *!
 nav ul {
+    padding: 0;
+    margin: 0;
     list-style: none;
-    padding: 20px;
-    margin: 20px;
-    display: flex;
-    justify-content: space-around;
-    position: fixed;
-    left: 30px;
-    flex-wrap: wrap;
+    text-align: center; !* Center the list *!
+    width: 100%; !* Full width *!
 }
 
-/* Styling for navigation links */
 nav a {
     text-decoration: none;
     color: black;
     display: block;
     font-size: 20px;
-    padding: 20px;
-    position: fixed;
-    top: 113px;
+    padding: 10px 120px;
+    transition: 0.5s all ease;
+    cursor: pointer;
+
 }
 
 ul li {
     list-style: none;
     text-align: center;
     display: inline-block;
-    position: fixed;
-}
+}*/
 
 
-ul li a:hover {
+/*ul li a:hover {
     color: darkblue ;
+}*/
+
+/*nav a:hover {
+    color: darkblue;
+    background-color: rgba(0, 0, 255, 0.1); !* Light background on hover for better visibility *!
+}*/
+
+#menuButton {
+    display: block;
+    font-size: 34px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: black;
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1001;
 }
+
+#burgerMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.9); /
+    color: white;
+    z-index: 1000;
+}
+
+#burgerMenu nav ul {
+    list-style-type: none;
+    padding: 20px;
+    text-align: center;
+    margin: 100px 0 0;
+}
+
+#burgerMenu nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    display: block;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#burgerMenu nav a:hover, #burgerMenu nav a:focus {
+    background-color: #555;
+}
+
+#burgerMenu nav a:active {
+    background-color: #333;
+}
+
+#menuButton.menu-active {
+    color: white;
+}
+
 
 /* Media query for screens with a maximum width of 768px */
 @media (max-width: 700px) {

@@ -1,0 +1,31 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+header {
+    background-color: rgba(119, 136, 153, 0.9);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+.meeting {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
+h2, h3 {
+    color: #333;
+}
+p {
+    margin: 10px 0;
+}
+.team-members {
+    font-style: italic;
+}
+.description {
+    margin-top: 10px;
+}

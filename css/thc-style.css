@@ -48,7 +48,7 @@ nav a {
     font-size: 20px;
     text-decoration: none;
     transition: 0.5s all ease;
-    padding: 10px; /* Adjusted padding for visual appeal */
+    padding: 10px;
 }
 
 ul li {

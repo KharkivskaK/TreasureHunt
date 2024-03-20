@@ -41,8 +41,8 @@
     <div id="burgerMenu">
       <nav>
         <ul>
-          <li><a href="">Testing</a></li>
-          <li><a href="">Team Notes</a></li>
+          <li><a href="testing.html">Testing</a></li>
+          <li><a href="notes.html">Team Notes</a></li>
         </ul>
       </nav>
     </div>
@@ -94,15 +94,18 @@
   </footer>
 
 </div>
-
 <script>
   function cookieFinder() {
-    if (cookieExists("THCWebApp-sessionID")) showModal("sessionModal");
-    else window.location.href = "start.html";
-  }
-  cookieFinder();
+    if (cookieExists("THCWebApp-sessionID")) {
+        showModal("sessionModal");
+    } else {
+        // Perform another action, e.g., show a message, enable a button, etc.
+        console.log("Session cookie not found. Please start a new session.");
+        // You can also call another function here or manipulate the DOM based on your needs
+    }
+}
+cookieFinder();
 </script>
-
 
 </body>
 </html>
