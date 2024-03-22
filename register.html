@@ -17,22 +17,24 @@
     <meta name="msapplication-TileImage" content="image/map2.png">
     <meta name="msapplication-TileColor" content="#008080">
 
+    <script type="text/javascript" src="js/utilities.js"></script>
     <link rel="stylesheet" href="css/thc-style.css">
     <title>TREASURE HUNT GAME - Register</title>
-    <script type="text/javascript" src="js/utilities.js"></script>
-    <script type="text/javascript" src="js/register.js"></script>
 
 </head>
 
 <body>
-
 <div id="overlay" class="overlay" onclick="hideContent()"></div>
 
+<!-- Container -->
 <div id="container" style="display:block">
-
     <header>
+        <!-- Heading and Subheading -->
         <h1>TREASURE HUNT GAME</h1>
         <p>Welcome to our adventure!</p>
+        <!-- Hamburger Menu Icon -->
+        <button id="menuButton" onclick="toggleNav()"></button>
+        <!-- Navigation Links -->
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -41,7 +43,6 @@
             </ul>
         </nav>
     </header>
-
     <div id="help" class="box">
         <div class="box-content">
             <img src="images/help.png" alt="Help Icon" class="box-icon">
@@ -60,9 +61,9 @@
         <div class="box-content">
             <img src="images/about.png" alt="Help Icon" class="box-icon2">
             <div>
-        <h3>About</h3>
-        <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
-        <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
+                <h3>About</h3>
+                <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
+                <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
             </div>
         </div>
     </div>
@@ -72,6 +73,15 @@
         <p class="bubble" id="registerBubble"></p>
         <div class="clearFloat"></div>
     </div>
+
+    <script>
+        var categorySelectedUUID = fetchGetVariable("cuuid");
+        var categorySelectedName = fetchGetVariable("cname");
+        categorySelectedName = categorySelectedName.split('+').join(' ');
+        var registerBubble = document.getElementById('registerBubble');
+        registerBubble.innerHTML = "<p> You are looking for the \"" + categorySelectedName + "\"  treasure. Now tell us your name and e-mail and we are ready to go!</p>" +
+            "<p style='color:red'>Make sure you <u>ALLOW</u> Geolocation in your browser!";
+    </script>
 
     <div class="registerForm">
 
@@ -108,6 +118,29 @@
     </div>
 
 </div>
+
+<script>
+    // Function to toggle the menu in mobile view
+    function toggleMenu() {
+        var navUl = document.querySelector('nav ul');
+        navUl.style.display = (navUl.style.display === 'block') ? 'none' : 'block';
+    }
+    // Function to hide content overlay
+    function hideContent() {
+        document.getElementById('overlay').style.display = 'none';
+        // Hide the navigation menu as well
+        document.querySelector('nav ul').style.display = 'none';
+    }
+    // Function to show content based on section ID
+    function showContent(sectionId) {
+        // Logic to show content for 'help' or 'about'
+        // ...
+    }
+
+    document.getElementById('menuButton').addEventListener('click', function() {
+        var nav = document.querySelector('nav ul');
+        nav.classList.toggle('active');
+</script>
 
 </body>
 </html>

@@ -61,6 +61,93 @@ ul li a:hover {
     color: darkblue ;
 }
 
+@media (max-width: 768px) {
+    /* Styles for the navigation menu */
+    nav ul {
+        display: none; /* Hide the navigation menu initially */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #333; /* Menu background color */
+    }
+    nav ul li {
+        display: block; /* Stack list items vertically */
+        text-align: center;
+        border-bottom: 1px solid #fff; /* Add a border to separate menu items */
+    }
+    nav ul li a {
+        display: block;
+        padding: 10px; /* Larger touch area for links */
+        color: white; /* Menu link color */
+    }
+    /* Style for the menu icon (e.g., hamburger icon) */
+    .menu-icon {
+        cursor: pointer;
+        display: block; /* Show the menu icon */
+        text-align: center;
+        font-size: 30px; /* Icon size */
+        padding: 10px;
+        background: #333; /* Icon background color */
+        color: white; /* Icon color */
+    }
+}
+
+#menuButton {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position relative to its nearest positioned ancestor */
+    left: 0; /* Align to the left */
+    top: 100%; /* Place it right below the header (100% of the header's height) */
+    background-color: #333; /* Background color */
+    color: #fff; /* Text/icon color */
+    padding: 10px; /* Spacing around the text/icon */
+    cursor: pointer; /* Pointer cursor to indicate clickable item */
+}
+
+/* Styles for mobile devices */
+@media (max-width: 600px) {
+    /* Button appears below the header */
+    #menuButton {
+        display: block;
+        position: absolute;
+        top: 100%; /* Directly below the header element */
+        left: 0;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        width: 100%; /* Full width */
+        text-align: left;
+        border: none;
+        font-size: 1em;
+    }
+
+    /* Navigation menu is a vertical layout */
+    nav ul {
+        display: none; /* Hidden by default */
+        flex-direction: column; /* Stack items vertically when menu is active */
+        width: 100%; /* Full width */
+        position: absolute;
+        top: 100%; /* Directly below the header element */
+        left: 0;
+        background-color: #333;
+    }
+
+    /* Show navigation when 'active' class is applied */
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: left;
+        display: block; /* Stack items vertically */
+    }
+
+    nav ul li a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+    }
+}
 
 
 .clearFloat {

@@ -1,10 +1,3 @@
-var categorySelectedUUID = fetchGetVariable("cuuid");
-var categorySelectedName = fetchGetVariable("cname");
-categorySelectedName = categorySelectedName.split('+').join(' ');
-var registerBubble = document.getElementById('registerBubble');
-registerBubble.innerHTML = "<p> You are looking for the \"" + categorySelectedName + "\"  treasure. Now tell us your name and e-mail and we are ready to go!</p>" +
-    "<p style='color:red'>Make sure you <u>ALLOW</u> Geolocation in your browser!";
-
 var categoryUUID = fetchGetVariable("categoryUUID");
 var categoryName = fetchGetVariable("categoryName");
 var playerName = fetchGetVariable("firstPirateName");
