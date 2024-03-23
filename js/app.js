@@ -1,6 +1,6 @@
 /********************************************************************************
 	File Name: 
-		utilities.js
+		app.js
 	Description:
 		Contains various utility functions used to correctly run the application.
 *********************************************************************************/
@@ -156,6 +156,8 @@ function isAndroid() {
 	var isAndroid = ua.indexOf("android") > -1;
 	if(isAndroid) document.getElementById("gappsBadge").style.display = "block";
 }
+
+
 
 function showContent(id) {
     document.getElementById('overlay').style.display = 'block';

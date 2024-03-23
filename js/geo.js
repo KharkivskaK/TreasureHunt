@@ -1,6 +1,6 @@
 /********************************************************************************
 	File Name: 
-		updateLocation.js
+		geo.js
 	Description:
 		Contains functions used to update the user's location.
 *********************************************************************************/
@@ -48,7 +48,7 @@ function server_updateLocation_Auto() {
 /**
  * Updates Location on user answer.
  */
-function updateLocation() {
+function geo() {
 	if (navigator.geolocation) navigator.geolocation.getCurrentPosition(server_updateLocation_Manual, showError);
 	else alert("Geolocation is not supported by this browser.");
 }

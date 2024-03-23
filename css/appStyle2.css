@@ -1,6 +1,6 @@
 /********************************************************************************
-	File Name: 
-		thc-style.css
+	File Name:
+		appStyle.css
 	Description:
 		Contains styling for the Treasure Hunt Web App.
 *********************************************************************************/
@@ -125,7 +125,7 @@ ul li a:hover {
     }
 }
 
-#score {
+#scoreNum {
     color: orange;
     float: left;
     padding-left: 3px;
@@ -471,7 +471,7 @@ ul.scoreBanner li a:hover:not(.active) {
 
 /**** SCOREBOARD LISTS ****/
 
-#scoreboardList {
+#scoreList {
     list-style-type: none;
     padding: 0px;
 }
@@ -480,13 +480,13 @@ ul.scoreBanner li a:hover:not(.active) {
     border-radius: 0 !important;
 }
 
-#scoreboardList li {
+#scoreList li {
     border-bottom: 1px solid #CFCFCF;
     background-color: #0056b3;
     padding: 0px 10px;
 }
 
-#scoreboardList li:first-child {
+#scoreList li:first-child {
     border-top: 1px solid #CFCFCF;
 }
 
@@ -521,7 +521,7 @@ ul.scoreBanner li a:hover:not(.active) {
 }
 
 @media only screen and (max-width: 320px) {
-    #scoreboardList li {
+    #scoreList li {
         font-size: 80%;
     }
 }
@@ -1230,7 +1230,7 @@ input:-ms-input-placeholder {
     justify-content: center !important;
 }
 
-.custom-header{
+.playerHeader{
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -1240,18 +1240,18 @@ input:-ms-input-placeholder {
     margin-top: 170px;
 }
 
-.skip-div{
+.skip{
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: center;
 }
-.score-div{
+.score{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-#score{
+#scoreNum{
     background-color: rgb(202, 199, 199);
     padding: 5px 15px;
     height: 100%;
@@ -1259,7 +1259,7 @@ input:-ms-input-placeholder {
     border-radius: 4px;
 }
 
-.score-form-div{
+.scoreForm{
     background-color: #e4e4e4;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -1276,7 +1276,7 @@ input:-ms-input-placeholder {
     float: left;
 }
 
-#scoreboardList{
+#scoreList{
     overflow-y: scroll;
     height: 500px;
 }

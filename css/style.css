@@ -353,7 +353,7 @@ footer button {
     justify-content: center !important;
 }
 
-.custom-header{
+.playerHeader{
     background-color: #fff;
     padding: 10px;
     display: flex;
@@ -363,18 +363,18 @@ footer button {
     border-bottom: 1px solid grey;
 }
 
-.skip-div{
+.skip{
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: center;
 }
-.score-div{
+.score{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-#score{
+#scoreNum{
     background-color: rgb(202, 199, 199);
     padding: 5px 15px;
     height: 100%;
@@ -382,7 +382,7 @@ footer button {
     border-radius: 4px;
 }
 
-.score-form-div{
+.scoreForm{
     background-color: #e4e4e4;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -400,7 +400,7 @@ footer button {
     float: left;
 }
 
-#scoreboardList{
+#scoreList{
     overflow-y: scroll;
     height: 500px;
 }

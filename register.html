@@ -1,24 +1,17 @@
-<!------------------------------------------------------------------------------------------
-	File Name: 
-		register.html
-	Description:
-		Shows a form that allows a user to register a name and e-mail to play.
--------------------------------------------------------------------------------------------->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="images/map2.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/map2.png">
+    <link rel="icon" href="../TreasureHunt3/images/map2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../TreasureHunt3/images/map2.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="teal">
     <meta name="apple-mobile-web-app-title" content="Simple app">
     <meta name="msapplication-TileImage" content="image/map2.png">
     <meta name="msapplication-TileColor" content="#008080">
 
-    <script type="text/javascript" src="js/utilities.js"></script>
-    <link rel="stylesheet" href="css/thc-style.css">
+    <script type="text/javascript" src="js/app.js"></script>
+    <link rel="stylesheet" href="../TreasureHunt3/appStyle.css">
     <title>TREASURE HUNT GAME - Register</title>
 
 </head>
@@ -33,7 +26,7 @@
         <h1>TREASURE HUNT GAME</h1>
         <p>Welcome to our adventure!</p>
         <!-- Hamburger Menu Icon -->
-        <button id="menuButton" onclick="toggleNav()"></button>
+        <button id="menuButton" onclick="toggleNav()">☰</button>
         <!-- Navigation Links -->
         <nav>
             <ul>
@@ -45,7 +38,7 @@
     </header>
     <div id="help" class="box">
         <div class="box-content">
-            <img src="images/help.png" alt="Help Icon" class="box-icon">
+            <img src="../TreasureHunt3/images/help.png" alt="Help Icon" class="box-icon">
             <div>
                 <h3>Help</h3>
                 <p>Answer Questions: As you embark on your treasure hunt, you'll encounter various questions.</p>
@@ -59,7 +52,7 @@
 
     <div id="about" class="box">
         <div class="box-content">
-            <img src="images/about.png" alt="Help Icon" class="box-icon2">
+            <img src="../TreasureHunt3/images/about.png" alt="Help Icon" class="box-icon2">
             <div>
                 <h3>About</h3>
                 <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
@@ -75,17 +68,17 @@
     </div>
 
     <script>
-        var categorySelectedUUID = fetchGetVariable("cuuid");
-        var categorySelectedName = fetchGetVariable("cname");
+        let categorySelectedUUID = fetchGetVariable("cuuid");
+        let categorySelectedName = fetchGetVariable("cname");
         categorySelectedName = categorySelectedName.split('+').join(' ');
-        var registerBubble = document.getElementById('registerBubble');
+        let registerBubble = document.getElementById('registerBubble');
         registerBubble.innerHTML = "<p> You are looking for the \"" + categorySelectedName + "\"  treasure. Now tell us your name and e-mail and we are ready to go!</p>" +
             "<p style='color:red'>Make sure you <u>ALLOW</u> Geolocation in your browser!";
     </script>
 
     <div class="registerForm">
 
-        <form name="registerPiratesForm" class="" id="registerPiratesForm" action="startGame.html" method="get">
+        <form name="registerPiratesForm" class="" id="registerPiratesForm" action="game.html" method="get">
 
             <p><input id="firstPirateName" type="text" title="Name can only contain letters, numbers, - and ."
                       name="firstPirateName" pattern="[a-zA-Z0-9.-]{1,20}" placeholder="Name..." maxlength="20"
@@ -120,26 +113,47 @@
 </div>
 
 <script>
-    // Function to toggle the menu in mobile view
-    function toggleMenu() {
-        var navUl = document.querySelector('nav ul');
-        navUl.style.display = (navUl.style.display === 'block') ? 'none' : 'block';
+
+    function toggleNav() {
+        var nav = document.querySelector('nav ul');
+        nav.classList.toggle('active');
     }
-    // Function to hide content overlay
-    function hideContent() {
+
+    function hideContentNav() {
         document.getElementById('overlay').style.display = 'none';
-        // Hide the navigation menu as well
-        document.querySelector('nav ul').style.display = 'none';
+        var nav = document.querySelector('nav ul');
+        if (nav.classList.contains('active')) {
+            nav.classList.remove('active');
+        }
     }
-    // Function to show content based on section ID
-    function showContent(sectionId) {
-        // Logic to show content for 'help' or 'about'
-        // ...
+
+    function showContentNav(sectionId) {
+        // Hide all content sections
+        document.querySelectorAll('.box').forEach(function(section) {
+            section.style.display = 'none';
+        });
+
+        // Show the content section with the matching ID
+        var contentSection = document.getElementById(sectionId);
+        if(contentSection) {
+            contentSection.style.display = 'block';
+        }
+
+        // Optionally, hide the navigation menu on mobile after selecting a section
+        // This is useful if your navigation is a dropdown in mobile view
+        var navMenu = document.querySelector('nav ul');
+        if (navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active'); // Remove the 'active' class to hide the menu
+        }
+
+        // Hide the overlay as well, if you have one that should disappear when a section is selected
+        document.getElementById('overlay').style.display = 'none';
     }
 
     document.getElementById('menuButton').addEventListener('click', function() {
-        var nav = document.querySelector('nav ul');
+        let nav = document.querySelector('nav ul');
         nav.classList.toggle('active');
+    });
 </script>
 
 </body>

@@ -1,6 +1,6 @@
 /********************************************************************************
 	File Name: 
-		answerQuestion.js
+		question.js
 	Description:
 		This file contains functions used to answer, skip, update the questions
 		and the score.
@@ -17,7 +17,7 @@ function updateScore() {
 			var statusItem = jsonData.status;
 			if (statusItem == "OK") {
 				var score = jsonData.score;
-				var scoreLabel = document.getElementById("score");
+				var scoreLabel = document.getElementById("scoreNum");
 				scoreLabel.innerHTML = score;
                 changeScoreLabelColor();
 			}//end if OK
@@ -39,7 +39,7 @@ function updateScore() {
  * Changes the color in the score label from green to orange to red.
  */
 function changeScoreLabelColor() {
-	var score = document.getElementById("score");
+	var score = document.getElementById("scoreNum");
 	if (score.innerHTML > 0) score.style.color = "green";
 	else if (score.innerHTML == 0) score.style.color = "#FF5100";
 	else score.style.color = "red";
@@ -126,7 +126,7 @@ function updateQuestion() {
                 }
                 var errorStr = jsonData.status + ":\n" + errorMessages;
                 alert(errorStr);
-                document.location = "start.html";
+                document.location = "app.html";
 			}//end if not OK
 
             //Hide the loader and display the page:
@@ -148,7 +148,7 @@ function updateQuestion() {
  * Answers a question with a given answer.
  * @param answer
  */
-function answerQuestion(answer) {
+function question(answer) {
 
     //Displays a message when the user attempts to answer a question with no internet connection:
     if (!navigator.onLine) {
@@ -157,7 +157,7 @@ function answerQuestion(answer) {
     else {
 
         //Update the location first:
-        updateLocation();
+        geo();
 
         //Make the call to answer question:
         var xhttp = new XMLHttpRequest();
@@ -281,7 +281,7 @@ function filterAnswer(e) {
                 return;
             }
         }
-        answerQuestion(answer);
+        question(answer);
     }
 }
 

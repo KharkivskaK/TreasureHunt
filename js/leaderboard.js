@@ -1,6 +1,6 @@
 /********************************************************************************
  File Name:
- getScoreboard.js
+ leaderboard.js
  Description:
  Contains functions to get scoreboard data for the final (post-finish)
  and intermediate (pre-finish) scoreboards.
@@ -10,7 +10,7 @@
 /**
  * Makes a server request and dynamically creates the scoreboard for the final scoreboard page.
  */
-function getScoreboard() {
+function leaderboard() {
 
     var SESSION_ID = getCookie(COOKIE_SESSION_ID);
 
@@ -35,7 +35,7 @@ function getScoreboard() {
             var statusItem = jsonData.status;
             if (statusItem == "OK") {
                 var data = jsonData.leaderboard;
-                var list = document.getElementById('scoreboardList');
+                var list = document.getElementById('scoreList');
                 for (var i in data) {
                     if (data[i].player == currentPlayerName) {
                         currentPlayerRank = Number(i) + 1;
@@ -98,7 +98,7 @@ function getScoreboardAsPopup() {
             var statusItem = jsonData.status;
             if (statusItem == "OK") {
                 var data = jsonData.leaderboard;
-                var list = document.getElementById('scoreboardList');
+                var list = document.getElementById('scoreList');
                 list.className += "noRadius";
                 while (list.firstChild) list.removeChild(list.firstChild); //Empty the list first (for update)
 
