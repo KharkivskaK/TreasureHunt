@@ -6,7 +6,7 @@ body {
 }
 
 div {
-    background-color: rgba(119, 136, 153, 0.5);
+    background-color: #41B3A3;
 }
 
 header {
@@ -19,10 +19,25 @@ header {
 
 header h1 {
     margin: 0;
+    color: #66FCF1;
 }
 
+h2{
+    color: white;
+    border: 5px solid #45A29E;
+    outline-width: thick;
+    /*width: 100px;*/
+    position: relative;
+    text-align: center;
+    padding: 0 10px;
+
+}
+section p{
+    color: white;
+}
 header p {
     font-size: 20px;
+    color: white;
 }
 
 section {
