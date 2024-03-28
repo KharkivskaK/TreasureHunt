@@ -1,3 +1,4 @@
+/* Styling for the body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     background-color: rgba(119, 136, 153, 0.5);
 }
 
+/* Styling for the header section */
 header {
     background-color: rgba(119, 136, 153, 0.6);
     color: black;
@@ -18,21 +20,23 @@ header {
     top:0;
 }
 
+/* Styling for header heading */
 header h1 {
     margin: 0;
     color: black;
 }
 
+/* Styling for header paragraph */
 header p {
     font-size: 20px;
     color: black;
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 490px) {
     header h1{
         font-size: 25px;
     }
-   
     header p{
         font-size: 18px;
     }
@@ -55,89 +59,106 @@ nav a {
     padding: 10px;
 }
 
+/* Styling for list items */
 ul li {
     list-style: none;
     text-align: right;
     cursor: pointer
 }
 
-
+/* Styling for hover effect on navigation links */
 ul li a:hover {
     color: darkblue ;
 }
 
+/* Styling for clear float */
 .clearFloat {
     clear: both;
 }
 
+/* Styling for container */
 #container {
     display: block;
     margin-top: 210px;
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 240px) {
     #container {
         margin-top: 50px
     }
 }
 
+/* Styling for elements with ID 'questionFromServer' */
 #questionFromServer {
     text-align: center;
     margin: 0;
 }
 
+/* Styling for elements with class 'header' */
 .header {
     width: 100%;
     position: fixed;
     top: 0px;
     z-index: 1000;
 }
+
+/* Media query for smaller screens */
 @media only screen and (max-width: 320px) {
     p {
         font-size: 70%;
     }
 }
 
+/* Styling for elements with ID 'scoreFeedback' */
 #scoreFeedback {
     color: red;
     font-weight: 700;
     text-decoration: blink;
 }
 
+/* Styling for disabled elements */
 .disabled {
     color: slategrey;
     cursor: not-allowed;
     padding: 5px;
 }
+
+/* Media query for larger screens */
 @media only screen and (min-width: 1024px) {
     .disabled {
         padding: 15px;
     }
 }
 
+/* Styling for elements with ID 'currecntPlayerScore' */
 #currecntPlayerScore {
     color: orange;
     float: left;
     padding-left: 3px;
 }
 
+/* Styling for paragraphs */
 p {
     transition: 0.5s;
     animation: ease-in;
 }
 
+/* Styling for elements with ID 'reqLocation' */
 #reqLocation {
     display: none;
     color: red;
     text-decoration: underline;
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 320px) {
     small {
         font-size: 70%;
     }
 }
 
+/* Styling for top navigation list */
 ul.topNav {
     list-style-type: none;
     padding: 2px 10px;
@@ -148,16 +169,18 @@ ul.topNav {
 }
 
 ul.topNav li {
-    float: right; 
+    float: right;
     border-left: 1px solid #e7e7e7;
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 320px) {
     ul.topNav li {
         font-size: 70%;
     }
 }
 
+/* Styling for top navigation links */
 ul.topNav li a {
     display: block;
     color: black;
@@ -168,22 +191,26 @@ ul.topNav li a {
     font-weight: 700;
 }
 
+/* Styling for hover effect on top navigation links */
 ul.topNav li a:hover:not(.active) {
     background-color: #e7e7e7;
 }
 
+/* Styling for top navigation images */
 .topNavImage {
     float: left;
     margin: 5px;
     margin-right: 2px;
 }
 
+/* Media query for smaller screens */
 @media only screen and (max-width: 320px) {
     .topNavImage {
         max-height: 20px;
     }
 }
 
+/* Styling for codeCy elements */
 .codeCy {
     float: left;
     margin: 8px;
@@ -191,6 +218,7 @@ ul.topNav li a:hover:not(.active) {
     margin-right: 1px;
 }
 
+/* Styling for score banner list */
 ul.scoreBanner {
     list-style-type: none;
     margin: 0;
@@ -200,12 +228,14 @@ ul.scoreBanner {
     background-color: rgba(0, 0, 0, 0.15);
 }
 
+/* Styling for score banner list items */
 ul.scoreBanner li {
     float: left;
     padding-left: 5px;
     padding-right: 5px;
 }
 
+/* Styling for score banner links */
 ul.scoreBanner li a {
     display: block;
     color: black;
@@ -216,10 +246,12 @@ ul.scoreBanner li a {
     font-weight: 700;
 }
 
+/* Styling for hover effect on score banner links */
 ul.scoreBanner li a:hover:not(.active) {
     background-color: lightslategray;
 }
 
+/* Styling for score banner images */
 .scoreBannerImage {
     float: left;
     width: 40%;
@@ -229,6 +261,7 @@ ul.scoreBanner li a:hover:not(.active) {
     margin: 4px;
 }
 
+/* Styling for buttons with class 'btModal' */
 .btModal {
     background-color: rgba(0, 0, 0, 0.45);
     border: 1px solid white;
@@ -243,20 +276,24 @@ ul.scoreBanner li a:hover:not(.active) {
     transition: 1s;
 }
 
+/* Hover effect for buttons */
 .btModal:hover {
     background-color: black;
 }
 
+/* Active state style for modal button */
 .btModal:active {
     background-color: black;
 }
 
+/* Sets padding for .btModal elements on screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     .btModal {
         padding: 10px;
     }
 }
 
+/* Adjusts padding and font size for .btModal elements on screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
     .btModal {
         padding: 20px;
@@ -264,6 +301,7 @@ ul.scoreBanner li a:hover:not(.active) {
     }
 }
 
+/* Styles the #skipBtn for screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
     #skipBtn {
         padding: 10px 20px;
@@ -278,12 +316,14 @@ ul.scoreBanner li a:hover:not(.active) {
     }
 }
 
+/* Sets width, margin, and height for .MCQ class elements, used for multiple-choice questions */
 .MCQ {
     width: 20%;
     margin: 2px;
     height: 50px;
 }
 
+/* Adjusts height and margin-top for .MCQ elements on screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
     .MCQ {
         height: 100px;
@@ -291,16 +331,19 @@ ul.scoreBanner li a:hover:not(.active) {
     }
 }
 
+/* Defines width and max-width for start button elements */
 .startButton {
     width: 80%;
     max-width: 300px;
 }
 
+/* Sets the height and float direction for start image elements */
 .startImage {
     height: 30px;
     float: right;
 }
 
+/* Styles for various submit buttons */
 #submitAnswerBt, #submitBtnInteger, #submitBtnNumber {
     padding: 10px 20px;
     display: inline-block;
@@ -313,14 +356,17 @@ ul.scoreBanner li a:hover:not(.active) {
     border-radius: 15px;
 }
 
+/* Hover effects for skip and submit buttons, changing background color */
 #skipBtn:hover, #submitAnswerBt:hover, #submitBtnInteger:hover, #submitBtnNumber:hover  {
     background-color: rgba(119, 136, 153, 0.6);
 }
 
+/* Styles for elements when the time has finished */
 .timeFinished {
     color: #e7e7e7;
 }
 
+/* Styles for displaying player name */
 .playerName {
     font-weight: 700;
     padding-top: 25px;
@@ -329,13 +375,14 @@ ul.scoreBanner li a:hover:not(.active) {
     color: black;
 }
 
-
+/* Styles for categories bubble */
 #categoriesBubble {
     width: 60%;
     margin: 10px;
     max-width: 250px;
 }
 
+/* Styles for the register bubble */
 #registerBubble {
     font-size: 100%;
     width: 60%;
@@ -346,6 +393,7 @@ ul.scoreBanner li a:hover:not(.active) {
     top: 160px;
 }
 
+/* Styles for the question bubble */
 #questionBubble {
     font-size: 100%;
     width: 60%;
@@ -353,6 +401,7 @@ ul.scoreBanner li a:hover:not(.active) {
     margin: 10px;
 }
 
+/* Styles for instruction elements */
 .instructions{
     margin: 2px;
     display: flex;
@@ -362,35 +411,23 @@ ul.scoreBanner li a:hover:not(.active) {
     height: 100px;
 }
 
+/* Margin top for the register form */
 .registerForm {
     margin-top: 150px;
 }
 
-#mcqForm {
+/* Display styles for various form elements  */
+#mcqForm, #textForm, #booleanForm, #integerForm, #numberForm {
     display: none;
 }
 
-#textForm {
-    display: none;
-}
-
-#booleanForm {
-    display: none;
-}
-
-#integerForm {
-    display: none;
-}
-
-#numberForm {
-    display: none;
-}
-
+/* Styles for the register pirates form */
 #registerPiratesForm {
     text-align: center;
 }
 
-input[type=text] {
+/* Common styles for text and number input types */
+input[type=text], input[type=number] {
     width: 95%;
     background-color: white;
     padding: 2px 4px;
@@ -402,36 +439,16 @@ input[type=text] {
     max-width: 400px;
 }
 
-input[type=number] {
-    width: 95%;
-    background-color: white;;
-    padding: 2px 4px;
-    margin: 2px 0;
-    box-sizing: border-box;
-    border: none;
-    border-bottom: 1px solid royalblue;
-    border-radius: 4px;
-    max-width: 400px;
-}
-
-input:focus {
-    outline: 0;
-}
-
+/* Adjusts padding, margin, and font size for text and number inputs on screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
-    input[type=text] {
-        padding: 12px 20px;
-        margin: 8px 0;
-        font-size: 110%;
-    }
-
-    input[type=number] {
+    input[type=text], input[type=number] {
         padding: 12px 20px;
         margin: 8px 0;
         font-size: 110%;
     }
 }
 
+/* Styles for email input type */
 input[type=email] {
     width: 95%;
     background-color: transparent;
@@ -444,6 +461,7 @@ input[type=email] {
     max-width: 400px;
 }
 
+/* Adjusts padding, margin, and font size for email inputs on screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     input[type=email] {
         padding: 12px 20px;
@@ -452,10 +470,12 @@ input[type=email] {
     }
 }
 
+/* Transition effect for all input types */
 input {
     transition: 1s;
 }
 
+/* Styles for select elements, including width, background color, border radius, max-width, and padding */
 select {
     width: 95%;
     background-color: transparent;
@@ -464,6 +484,7 @@ select {
     padding: 2px 4px;
 }
 
+/* Adjusts padding, margin, and font size for select elements on screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     select {
         padding: 12px 20px;
@@ -472,22 +493,12 @@ select {
     }
 }
 
-input::-webkit-input-placeholder {
+/* Styles for placeholder text in input elements, setting font style to italic */
+input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder, input:-ms-input-placeholder {
     font-style: italic;
 }
 
-input:-moz-placeholder {
-    font-style: italic;
-}
-
-input::-moz-placeholder {
-    font-style: italic;
-}
-
-input:-ms-input-placeholder {
-    font-style: italic;
-}
-
+/* Defines the base style for modal overlays */
 .modal {
     z-index: 3;
     display: none;
@@ -501,6 +512,7 @@ input:-ms-input-placeholder {
     background-color: black;
 }
 
+/* Styling for the content container within a skip modal */
 .skipModal-content {
     margin: auto;
     background-color: white;
@@ -510,6 +522,7 @@ input:-ms-input-placeholder {
     width: 600px;
 }
 
+/* Style for close buttons within modals */
 .closebtn {
     text-decoration: none;
     float: right;
@@ -518,16 +531,18 @@ input:-ms-input-placeholder {
     color: inherit;
 }
 
+/* Enhances the hover and focus states of close buttons */
 .closebtn:hover, .closebtn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer
 }
 
+/* Responsive adjustments for the skip modal's content width on narrower screens. */
 @media (max-width: 600px) {
     .skipModal-content {
         margin: 0 10px;
-        width: auto !important;
+        width: auto;
     }
 
     .modal {
@@ -535,6 +550,7 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Adjustments for medium-sized devices */
 @media (max-width: 768px) {
     .skipModal-content {
         width: 500px;
@@ -545,60 +561,57 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Defines content width for large screens */
 @media (min-width: 993px) {
     .skipModal-content {
         width: 900px;
     }
 }
 
+/* Adjusts padding for elements at the bottom of the scoreboard */
 .scoreboardBottomPadding {
     padding: 0;
 }
 
+/* Provides additional bottom padding for content in environments with limited vertical space. */
 @media (max-height: 640px) {
     .scoreboardBottomPadding {
         padding-bottom: 50px;
     }
 }
 
+/* Style for containers holding content, ensuring no default padding is applied. */
 .content-container {
     padding: 0
 }
 
+/* Clears floats after the content in a container */
 .content-container:after {
     content: "";
     display: table;
     clear: both;
 }
 
+/* Basic card styling, applying shadow */
 .card {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important
 }
 
+/* Styling for elements with a white text */
 .whiteBg {
     color: white;
     background-color: lightslategrey;
     border: 1px solid white;
 }
 
+/* Animation effect for elements that move from a lower position to their final position on the screen. */
 .animate-top {
     position: relative;
     -webkit-animation: animatetop 0.4s;
     animation: animatetop 0.4s
 }
 
-@-webkit-keyframes animatetop {
-    from {
-        top: -300px;
-        opacity: 0;
-    }
-
-    to {
-        top: 0;
-        opacity: 1;
-    }
-}
-
+/* Keyframes for animate top */
 @keyframes animatetop {
     from {
         top: -300px;
@@ -611,12 +624,13 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Transition effects for close buttons */
 .closebtn {
     -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
     transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s
 }
 
-
+/* Keyframe animation for a spinning effect */
 #loadingBar {
     position: absolute;
     left: 50%;
@@ -632,6 +646,7 @@ input:-ms-input-placeholder {
     animation: spin 2s linear infinite;
 }
 
+/* Defines the 'spin' animation */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -641,6 +656,7 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Adjustments for the loading bar on very small screens */
 @media (max-height: 480px) {
     #loadingBar {
         width: 50px;
@@ -652,6 +668,7 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Styles for icons within a section */
 .section-icon {
     width: 50px;
     height: 50px;
@@ -661,13 +678,13 @@ input:-ms-input-placeholder {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-
+/* Makes an element fully opaque */
 .visible {
     opacity: 1;
     transform: none;
 }
 
-
+/* Style for the first input field for entering a name */
 #firstPirateName
 {
     border: 1px solid grey;
@@ -675,6 +692,8 @@ input:-ms-input-placeholder {
     border-radius: 6px;
     width: 100%;
 }
+
+/* Container style for the registration form */
 #registerPiratesForm{
     background-color: #e4e4e4;
     border-radius: 10px;
@@ -685,12 +704,15 @@ input:-ms-input-placeholder {
     margin-top: 20px;
 }
 
+/* Style for the input field for entering an email */
 #firstPirateEmail{
     border: 1px solid lightslategrey;
     padding: 10px 5px;
     border-radius: 6px;
     width: 100%;
 }
+
+/* Style for the dropdown to select a gender */
 #genderSelect{
     border: 1px solid lightslategrey;
     padding: 10px 5px;
@@ -698,10 +720,12 @@ input:-ms-input-placeholder {
     width: 100%;
 }
 
+/* Style for the modal used to skip questions */
 #skipModal{
     display: none;
 }
 
+/* Generic style for input fields */
 .inputFiel{
     padding: 10px 10px;
     border-radius: 6px;
@@ -709,7 +733,7 @@ input:-ms-input-placeholder {
     background-color: white;
 }
 
-
+/* Style for custom option buttons */
 .custom{
     color: slategrey;
     background-color: lightslategrey;
@@ -726,12 +750,14 @@ input:-ms-input-placeholder {
     margin: 20px 10px;
 }
 
+/* Styles for form layouts that present questions */
 .questionform{
     display: flex;
     justify-content: center;
     background-color: white;
 }
 
+/* Styles for buttons representing a true option */
 .trueOption{
     color: rgb(116, 116, 116);
     background-color: slategrey;
@@ -749,6 +775,7 @@ input:-ms-input-placeholder {
     text-align: center;
 }
 
+/* Styles for buttons representing a false option */
 .falseOption{
     color: lightslategrey;
     background-color: slategrey;
@@ -766,31 +793,37 @@ input:-ms-input-placeholder {
     text-align: center;
 }
 
+/* Container for buttons with centered text alignment */
 .btn-div{
     text-align: center;
 }
 
+/* Changes background and text color of custom elements on hover */
 .custom:hover  {
     background-color: steelblue;
     color: white;
 }
 
+/* Changes background and text color of falseOption elements on hover */
 .falseOption:hover  {
     background-color: steelblue;
     color: white;
 }
 
+/* Changes background and text color of trueOption elements on hover */
 .trueOption:hover  {
     background-color: lawngreen;
     color: white;
 }
 
+/* Flex container to align and justify boolean options centrally */
 .boolean-div{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/* Style for displaying player information */
 .infoPlayer{
     padding: 10px;
     display: flex;
@@ -801,6 +834,7 @@ input:-ms-input-placeholder {
     margin-top: 170px;
 }
 
+/* Flex container for aligning skip button centrally with spacing */
 .skip{
     display: flex;
     align-items: center;
@@ -808,12 +842,14 @@ input:-ms-input-placeholder {
     justify-content: center;
 }
 
+/* Flex container for current player score display */
 .currentPlayerScore{
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* Flex container for current player score display */
 #currecntPlayerScore{
     background-color: #e7e7e7;
     padding: 5px 15px;
@@ -822,6 +858,7 @@ input:-ms-input-placeholder {
     border-radius: 4px;
 }
 
+/* Primary action button style */
 .btnSub {
     background-color: royalblue;
     text-align: center;
@@ -837,11 +874,12 @@ input:-ms-input-placeholder {
     border-radius: 15px;
 }
 
+/* Hover state for primary action button */
 .btnSub:hover {
     background-color: lawngreen;
 }
 
-
+/* Style for smaller footer buttons */
 .footerbtn {
     background-color: royalblue;
     text-align: center;
@@ -858,6 +896,7 @@ input:-ms-input-placeholder {
     margin-bottom: 10px;
 }
 
+/* Styles for popup containers */
 .popup-container {
     display: none;
     position: fixed;
@@ -876,35 +915,38 @@ input:-ms-input-placeholder {
     font-family: Arial, sans-serif;
 }
 
-
-
+/* Styles for the heading within the popup container */
 .popup-container h3 {
     color: rgba(119, 136, 153, 2.0);
     margin-top: 0;
 }
 
+/* Styles for paragraphs within the popup container */
 .popup-container p {
     line-height: 1.2;
     margin-bottom: 1rem;
 }
 
+/* Flex container for content within the popup */
 .popup-content {
     display: flex;
 }
 
+/* Styles for primary and secondary icons within the popup */
 .popup-icon {
     width: 250px;
     height: 100px;
     margin: auto;
 }
 
+/* Styles for primary and secondary icons within the popup */
 .popup-icon2 {
     width: 150px;
     height: 75px;
     margin: auto;
 }
 
-/* hiding icons on smaller screen */
+/* Hiding icons on smaller screen */
 @media screen and (max-width: 600px){
     .popup-icon {
        display: none;
@@ -914,6 +956,7 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Initial and visible state transitions for popup icons */
 .popup-content .popup-icon {
     opacity: 0;
     transform: scale(0.85);
@@ -937,6 +980,7 @@ input:-ms-input-placeholder {
     transform: translateX(0);
 }
 
+/* Wrapper to provide a dark overlay behind the popup */
 .wrapper {
     display: none;
     position: fixed;
