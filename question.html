@@ -1,208 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="../TreasureHunt3/images/map2.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../TreasureHunt3/images/map2.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="teal">
-    <meta name="apple-mobile-web-app-title" content="Simple app">
-    <meta name="msapplication-TileImage" content="image/map2.png">
-    <meta name="msapplication-TileColor" content="#008080">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="icon"
+      href="./images/map2.png"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="../TreasureHunt3/images/map2.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="teal" />
+    <meta name="apple-mobile-web-app-title" content="Simple app" />
+    <meta name="msapplication-TileImage" content="image/map2.png" />
+    <meta name="msapplication-TileColor" content="#008080" />
 
     <title>TREASURE HUNT GAME</title>
     <script src="js/cookies.js"></script>
-    <script> document.title = getCookie(COOKIE_CATEGORY_NAME).split('+').join(' ');</script>
-    <link href="css/appStyle2.css" rel="stylesheet" type="text/css"/>
+    <script>
+      document.title = getCookie(COOKIE_CATEGORY_NAME).split("+").join(" ");
+    </script>
+    <link href="css/question.css" rel="stylesheet" type="text/css" />
     <script src="js/app.js"></script>
     <script src="js/leaderboard.js"></script>
     <script src="js/geo.js"></script>
     <script src="js/question.js"></script>
-</head>
+  </head>
 
-<body onload="updateQuestion(); client_updateLocation_Auto(); updateScore(); server_updateLocation_Auto(); geo(); GLOBAL_LocationInitialized = true;">
+  <body
+    onload="fetchAndUpdateQuestion(); autoUpdateClientLocation(); processUpdateScore(); updateServerLocation(); geo(); GLOBAL_LocationInitialized = true;"
+  >
+  <div id="loadingBar"></div>
 
-<div id="loader"></div>
+  <div id="wrapper" class="wrapper" onclick="hideWrapper()"></div>
 
-<div id="overlay" class="overlay" onclick="hideContent()"></div>
-
-<div id="container" style="display:block">
-
-    <header>
+    <div id="container"">
+      <header>
         <h1>TREASURE HUNT GAME</h1>
         <p>Welcome to our adventure!</p>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#help" onclick="showContent('help')">Help</a></li>
-                <li><a href="#about" onclick="showContent('about')">About</a></li>
-            </ul>
+          <ul >
+            <li><a href="index.html">Home</a></li>
+            <li>
+              <a href="#help-popup" onclick="showPopup('help-popup')">Help</a>
+            </li>
+            <li>
+              <a href="#about-popup" onclick="showPopup('about-popup')"
+                >About</a
+              >
+            </li>
+          </ul>
         </nav>
-    </header>
+      </header>
 
-    <div id="help" class="box">
-        <div class="box-content">
-            <img src="../TreasureHunt3/images/help.png" alt="Help Icon" class="box-icon">
-            <div>
-                <h3>Help</h3>
-                <p>Answer Questions: As you embark on your treasure hunt, you'll encounter various questions.</p>
-                <p>Use your knowledge and wit to answer them correctly and move closer to the treasure.</p>
-                <p>Use Hints: Stuck on a question? Use hints (if available) to get clues that will help you answer the questions.</p>
-                <p>Collect Treasures: Each correct answer will guide you to different treasures.</p>
-                <p>Collect as many as you can!</p>
-            </div>
+      <div id="help-popup" class="popup-container">
+        <div class="popup-content">
+          <img src="./images/help.png" alt="Help Icon" class="popup-icon" />
+          <div>
+            <h3>Help</h3>
+            <p>
+              Answer Questions: As you embark on your treasure hunt, you'll
+              encounter various questions.
+            </p>
+            <p>
+              Use your knowledge and wit to answer them correctly and move
+              closer to the treasure.
+            </p>
+            <p>
+              Use Hints: Stuck on a question? Use hints (if available) to get
+              clues that will help you answer the questions.
+            </p>
+            <p>
+              Collect Treasures: Each correct answer will guide you to different
+              treasures.
+            </p>
+            <p>Collect as many as you can!</p>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <div id="about" class="box">
-        <div class="box-content">
-            <img src="../TreasureHunt3/images/about.png" alt="Help Icon" class="box-icon2">
-            <div>
-                <h3>About</h3>
-                <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
-                <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
-            </div>
+      <div id="about-popup" class="popup-container">
+        <div class="popup-content">
+          <img src="./images/about.png" alt="Help Icon" class="popup-icon2" />
+          <div>
+            <h3>About</h3>
+            <p>
+              Embark on an exciting journey through mysterious lands and
+              challenging puzzles. Our game is designed to test your knowledge,
+              wit, and adventure spirit.
+            </p>
+            <p>
+              Created by a dedicated team of puzzle enthusiasts and adventure
+              seekers, the Treasure Hunt Game offers a unique blend of learning
+              and fun.
+            </p>
+          </div>
         </div>
-    </div>
+      </div>
 
-
-    <div class="playerHeader">
+      <div class="infoPlayer">
         <div>
-            <script>
-                var playerName = getCookie(COOKIE_PLAYER_NAME);
-                var sessionID = getCookie(COOKIE_SESSION_ID);
-                document.write("<span id='playerName'> <b>Player: </b><small>" + playerName + "</small></span>");
-            </script>
+          <script>
+            var playerName = getCookie(COOKIE_PLAYER_NAME);
+            var sessionID = getCookie(COOKIE_SESSION_ID);
+            document.write(
+              "<span id='playerName'> <b>Player: </b><small>" +
+                playerName +
+                "</small></span>"
+            );
+          </script>
         </div>
 
         <div class="skip">
-            <div class="score">
-                <span><b>Score</b></span>
-                <span id="scoreNum">0</span>
-                <div class="clearFloat"></div>
-            </div>
-            <!-- Skip Button -->
-            <button class="btn btn-primary" id="skipBtn" type="button" onclick="showModal()">
-                Skip
-            </button>
+          <div class="currentPlayerScore">
+            <span><b>Score</b></span>
+            <span id="scoreNum">0</span>
+            <div class="clearFloat"></div>
+          </div>
+          <!-- Skip Button -->
+          <button
+            class="btn btnSub"
+            id="buttonSkip"
+            type="button"
+            onclick="showModal()"
+          >
+            Skip
+          </button>
 
-            <!-- Custom Modal Structure -->
-            <div id="customModal" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <span class="close" onclick="hideModal()">&times;</span>
-                        <h4>Skip question?</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to skip the current question?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="footerbtn" type="button" onclick="hideModal()">Cancel</button>
-                        <button class="footerbtn" type="button" onclick="skipQuestion()">Skip</button>
-                    </div>
-                </div>
+          <!-- Custom Modal Structure -->
+          <div id="skipModal" class="modal">
+            <div class="skipModal-content">
+              <div class="skipModal-header">
+                <span class="close" onclick="hideModal()">&times;</span>
+                <h4>Skip question?</h4>
+              </div>
+              <div class="skipModal-body">
+                <p>Are you sure you want to skip the current question?</p>
+              </div>
+              <div class="skipModal-footer">
+                <button class="footerbtn" type="button" onclick="hideModal()">
+                  Cancel
+                </button>
+                <button
+                  class="footerbtn"
+                  type="button"
+                  onclick="processSkipQuestion()"
+                >
+                  Skip
+                </button>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-
-    <div class="content" align="center">
-
+      <div class="content" align="center">
         <div class="instructions">
-            <div class="instruction">
-                <h5 id="question" class="text-center p-2"></h5>
-                <div id="isLocationRelevant"><small>Requires Location!</small></div>
-                <div class="clearFloat"></div>
-            </div><!--bubble-->
-        </div><!--instructions-->
+          <div class="instruction">
+            <h5 id="questionFromServer" class="text-center p-2"></h5>
+            <div id="reqLocation"><small>Requires Location!</small></div>
+            <div class="clearFloat"></div>
+          </div>
+          <!--bubble-->
+        </div>
+        <!--instructions-->
 
-        <div class="custom-opions-form">
-            <form name="mcqForm" id="mcqForm">
-                <input id="answerABtn" name="answerABtn" type="button" value="A" class="custom-opions MCQ"
-                       onclick="question('A')"/>
-                <input id="answerBBtn" name="answerBtn" type="button" value="B" class="custom-opions MCQ"
-                       onclick="question('B')"/>
-                <input id="answerCBtn" name="answerCBtn" type="button" value="C" class="custom-opions MCQ"
-                       onclick="question('C')"/>
-                <input id="answerDBtn" name="answerDBtn" type="button" value="D" class="custom-opions MCQ"
-                       onclick="question('D')"/>
-            </form>
+        <div class="questionform">
+          <form name="mcqForm" id="mcqForm">
+            <input
+              id="opAButton"
+              name="opAButton"
+              type="button"
+              value="A"
+              class="custom MCQ"
+              onclick="processQuestion('A')"
+            />
+            <input
+              id="opBButton"
+              name="opBButton"
+              type="button"
+              value="B"
+              class="custom MCQ"
+              onclick="processQuestion('B')"
+            />
+            <input
+              id="opCButton"
+              name="opCButton"
+              type="button"
+              value="C"
+              class="custom MCQ"
+              onclick="processQuestion('C')"
+            />
+            <input
+              id="opDButton"
+              name="opDButton"
+              type="button"
+              value="D"
+              class="custom MCQ"
+              onclick="processQuestion('D')"
+            />
+          </form>
         </div>
 
-        <form name="textForm" id="textForm" onsubmit="filterAnswer(document.getElementById('answerText'));">
-            <input class="custom-input text" id="answerText" type="text" name="answerText" placeholder="Answer here..."
-                   size="30"
-                   required/>
-            <br>
-            <input id="submitBtnText" class="btn btn-primary" name="submitBtnText" type="button" value="Submit"
-                   onClick="filterAnswer(document.getElementById('answerText'));"/>
+        <form
+          name="textForm"
+          id="textForm"
+          onsubmit="validateAnswerAndProcess(document.getElementById('answerText'));"
+        >
+          <input
+            class="inputFiel text"
+            id="answerText"
+            type="text"
+            name="answerText"
+            placeholder="Answer here..."
+            size="30"
+            required
+          />
+          <br />
+          <input
+            id="submitAnswerBt"
+            class="btn btnSub"
+            name="submitAnswerBt"
+            type="button"
+            value="Submit"
+            onClick="validateAnswerAndProcess(document.getElementById('answerText'));"
+          />
         </form>
 
-        <form class="" name="integerForm" id="integerForm"
-              onsubmit="filterAnswer(document.getElementById('answerInteger'));">
-            <input class="custom-input text" id="answerInteger" type="number" name="answerInteger"
-                   placeholder="Answer here..." size="30"
-                   pattern="[0-9]" required/>
-            <br>
-            <input id="submitBtnInteger" class="btn btn-primary" name="submitBtnInteger" type="button" value="Submit"
-                   onClick="filterAnswer(document.getElementById('answerInteger'));"/>
+        <form
+          class=""
+          name="integerForm"
+          id="integerForm"
+          onsubmit="validateAnswerAndProcess(document.getElementById('answerInteger'));"
+        >
+          <input
+            class="ipField text"
+            id="answerInteger"
+            type="number"
+            name="answerInteger"
+            placeholder="Answer here..."
+            size="30"
+            pattern="[0-9]"
+            required
+          />
+          <br />
+          <input
+            id="submitBtnInteger"
+            class="btn btnSub"
+            name="submitBtnInteger"
+            type="button"
+            value="Submit"
+            onClick="validateAnswerAndProcess(document.getElementById('answerInteger'));"
+          />
         </form>
 
-        <form name="numberForm" id="numberForm" onsubmit="filterAnswer(document.getElementById('answerNumber'));">
-            <input class="custom-input text" id="answerNumber" type="number" name="answerNumber" placeholder="Answer here..."
-                   size="30"
-                    required/>
-            <input id="submitBtnNumber" class="btn btn-primary" name="submitBtnNumber" type="button" value="Submit"
-                   onClick="filterAnswer(document.getElementById('answerNumber'));"/>
+        <form
+          name="numberForm"
+          id="numberForm"
+          onsubmit="validateAnswerAndProcess(document.getElementById('answerNumber'));"
+        >
+          <input
+            class="custom-input text"
+            id="answerNumber"
+            type="number"
+            name="answerNumber"
+            placeholder="Answer here..."
+            size="30"
+            required
+          />
+          <input
+            id="submitBtnNumber"
+            class="btn btnSub"
+            name="submitBtnNumber"
+            type="button"
+            value="Submit"
+            onClick="validateAnswerAndProcess(document.getElementById('answerNumber'));"
+          />
         </form>
 
-        <div class="boolean-div">
-            <form name="booleanForm" id="booleanForm" class="custom-boolean">
-                <input id="trueBtn" name="trueBtn" type="" value="True" class="custom-true"
-                       onClick="question(true);"/>
-                <input id="falseBtn" name="falseBtn" type="button" value="False" class="custom-false"
-                       onClick="question(false);"/>
-            </form>
+        <div class="choiceForm">
+          <form name="booleanForm" id="booleanForm" >
+            <div style="display: flex;justify-content: center;" >
+            <input
+              id="trueOption"
+              name="trueOption"
+              type=""
+              value="True"
+              class="trueOption"
+              onClick="processQuestion(true);"
+            />
+            <input
+              id="falseOption"
+              name="falseOption"
+              type="button"
+              value="False"
+              class="falseOption"
+              onClick="processQuestion(false);"
+            />
+          </div>
+          </form>
         </div>
 
         <!-- Scoreboard pop-up -->
-        <div id="scoreboardPopup" class="modal">
-            <div class="modal-content animate-top card-8">
-                <header class="modalContainer hasBackground">
-      <span onclick="hideModal('scoreboardPopup');"
-            class="closebtn">&times;</span>
-                    <h2>Scoreboard</h2>
-                </header>
-                <div class="modalContainer" style="padding:0;">
-                    <div class="container">
-                        <ol id="scoreList"></ol>
-                    </div>
-                </div>
-                <div class="scoreboardBottomPadding"></div>
+        <div id="scoreboardPopupModal" class="modal">
+          <div class="popup-content animate-top card-8">
+            <header class="content-container whiteBg">
+              <span onclick="hideModal('scoreboardPopup');" class="closebtn"
+                >&times;</span
+              >
+              <h2>Scoreboard</h2>
+            </header>
+            <div class="modalContainer">
+              <div class="container">
+                <ol id="scoreList"></ol>
+              </div>
             </div>
+            <div class="scoreboardBottomPadding"></div>
+          </div>
         </div>
 
         <!-- Skip Question Modal -->
         <div id="skipQuestion" class="modal">
-            <div class="modal-content animate-top card-8">
-                <header class="modalContainer hasBackground">
-      <span onclick="hideModal('skipQuestion');"
-            class="closebtn">&times;</span>
-                    <h2>Skip question?</h2>
-                </header>
-                <div class="modalContainer">
-                    <p>Are you sure you want to skip the current question?</p>
-                </div>
-                <footer class="modalContainer">
-                    <button class="THCButton" onClick="hideModal('skipQuestion');">Cancel</button>
-                    <button class="THCButton" onClick="skipQuestion(); hideModal('skipQuestion');">Skip</button>
-                </footer>
+          <div class="modal-content animate-top card-8">
+            <header class="content-container whiteBg">
+              <span onclick="hideModal('skipQuestion');" class="closebtn"
+                >&times;</span
+              >
+              <h2>Skip question?</h2>
+            </header>
+            <div class="content-container">
+              <p>Are you sure you want to skip the current question?</p>
             </div>
+            <footer class="content-container">
+              <button class="btModal" onClick="hideModal('skipQuestion');">
+                Cancel
+              </button>
+              <button
+                class="btModal"
+                onClick="skipQuestion(); hideModal('skipQuestion');"
+              >
+                Skip
+              </button>
+            </footer>
+          </div>
         </div>
-
+      </div>
     </div>
-
-</div> <!--CONTAINER-->
-</body>
+  </body>
 </html>

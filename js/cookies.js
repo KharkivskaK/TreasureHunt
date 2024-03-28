@@ -1,64 +1,38 @@
-/********************************************************************************
-	File Name: 
-		cookies.js
-	Description:
-		Contains functions related to setting, changing, deleting cookies and 
-		getting their values.
-*********************************************************************************/
-
-
-/**
- * Sets a cookie with a specific name, value and expiration time.
- * If a cookie with the same name already exists, the cookie is replaced.
- * @param cname The name of the cookie.
- * @param cvalue The value of the cookie.
- * @param exdays The expiration time of the cookie.
- */
+// Function to set a cookie with a specified name, value, and expiration in days
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/";
 }
 
-/**
- * Returns a cookie's value or empty string if it does not exist.
- * @param cname The name of the cookie to get.
- * @returns {string}
- */
+// Function to retrieve a cookie value by its name
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
-    }//end for
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
     return "";
 }
 
-/**
- * Returns true if cookie exists, false if it does not.
- * @param cname The name of the cookie to check.
- * @returns {boolean}
- */
+// Function to check if a cookie exists by its name
 function cookieExists(cname) {
-    if (getCookie(cname) != "") return true; else return false;
+    return getCookie(cname) !== "";
 }
 
-/**
- * Deletes a given cookie.
- * @param cname The name of the cookie to delete.
- */
+// Function to delete a cookie by its name
 function deleteCookie(cname) {
-	var cvalue = "";
-	var d = new Date();
-    d.setTime(d.getTime() - 1);
-    var expires = "expires="+ d.toUTCString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
-/*---COOKIE NAMES ---*/
+// Constants for cookie names used in the web app
 const COOKIE_CATEGORY_NAME = "THCWebApp-categoryName";
 const COOKIE_PLAYER_NAME = "THCWebApp-playerName";
 const COOKIE_SESSION_ID = "THCWebApp-sessionID";

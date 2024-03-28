@@ -1,0 +1,716 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgba(119, 136, 153, 0.5);
+}
+
+header {
+    background-color: rgba(119, 136, 153, 0.6);
+    color: black;
+    padding: 2px;
+    padding-top:8px;
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    height: 150px;
+}
+
+header h1 {
+    margin: 0;
+    color: black;
+}
+
+header p {
+    font-size: 20px;
+    color: black;
+}
+
+/* Styling for the navigation bar list */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for navigation links */
+nav a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    padding: 10px;
+}
+
+ul li {
+    list-style: none;
+    text-align: right;
+}
+
+
+ul li a:hover {
+    color: darkblue ;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #333;
+    }
+    nav ul li {
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        padding: 10px;
+        background: #333;
+        color: white;
+    }
+}
+
+#menuBt {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Styles for mobile devices */
+@media (max-width: 600px) {
+    #menuBt {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        font-size: 1em;
+    }
+
+    header{
+        height: fit-content;
+    }
+
+    header h1{
+        font-size: 25px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        padding: 0
+    }
+
+    nav ul.active {
+        display: flex;
+        margin-top: 40px;
+        background-color: black;
+    }
+
+    nav ul li {
+        text-align: left;
+        display: block;
+    }
+
+    nav ul li a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+    }
+}
+
+
+.clearFloat {
+    clear: both;
+}
+
+#container {
+    display: block;
+    margin-top: 60px;
+}
+
+@media only screen and (max-width: 240px) {
+    #container {
+        margin-top: 50px
+    }
+}
+
+#question {
+    text-align: center;
+}
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+}
+
+.guideInfo {
+    border: 2px solid red;
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+@media only screen and (max-width: 320px) {
+    p {
+        font-size: 70%;
+    }
+}
+
+#message {
+    color: red;
+    text-decoration: blink;
+}
+
+.content {
+}
+
+.disabled {
+    color: grey;
+    cursor: not-allowed;
+    padding: 5px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .disabled {
+        padding: 15px;
+    }
+}
+
+#score {
+    color: orange;
+    float: left;
+    padding-left: 3px;
+}
+
+p {
+    transition: 0.5s;
+    animation: ease-in;
+}
+
+
+@media only screen and (max-width: 320px) {
+    small {
+        font-size: 70%;
+    }
+}
+
+.start{
+    background-color: lawngreen;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px black;
+    transition: 1s;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+}
+
+.start:hover {
+    background-color: limegreen;
+}
+
+ul.topNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #e7e7e7;
+}
+
+ul.topNav li {
+    float: left;
+    border-left: 1px solid #e7e7e7;
+}
+
+@media only screen and (max-width: 320px) {
+    ul.topNav li {
+        font-size: 70%;
+    }
+}
+
+ul.topNav li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+ul.topNav li a:hover:not(.active) {
+    background-color: lightslategrey;
+}
+
+.topNavImage {
+    float: left;
+    margin: 5px;
+    margin-right: 2px;
+}
+
+@media only screen and (max-width: 320px) {
+    .topNavImage {
+        max-height: 20px;
+    }
+}
+
+#categoriesBubble {
+    width: 60%;
+    margin: 10px;
+    max-width: 250px;
+}
+
+#questionBubble {
+    font-size: 100%;
+    width: 60%;
+    max-width: 300px;
+    margin: 10px;
+}
+
+.guide{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 160px;
+}
+
+.playerRegisterForm {
+    margin-top: 150px;
+}
+
+#mcqForm {
+    display: none;
+}
+
+#textForm {
+    display: none;
+}
+
+#booleanForm {
+    display: none;
+}
+
+#integerForm {
+    display: none;
+}
+
+#numberForm {
+    display: none;
+}
+
+#playerForm {
+    text-align: center;
+}
+
+input[type=text] {
+    width: 95%;
+    background-color: white;
+    padding: 2px 4px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid royalblue;
+    border-radius: 4px;
+    max-width: 400px;
+}
+
+input[type=number] {
+    width: 95%;
+    background-color: white;;
+    padding: 2px 4px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid royalblue;
+    border-radius: 4px;
+    max-width: 400px;
+}
+
+input:focus {
+    outline: 0;
+}
+
+@media only screen and (min-width: 320px) {
+    input[type=text] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 110%;
+    }
+
+    input[type=number] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 110%;
+    }
+}
+
+input[type=email] {
+    width: 95%;
+    background-color: transparent;
+    padding: 2px 4px;
+    margin: 2px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid royalblue;
+    border-radius: 4px;
+    max-width: 400px;
+}
+
+@media only screen and (min-width: 320px) {
+    input[type=email] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 110%;
+    }
+}
+
+input {
+    transition: 1s;
+}
+
+select {
+    width: 95%;
+    background-color: transparent;
+    border-radius: 10px;
+    max-width: 400px;
+    padding: 2px 4px;
+}
+
+@media only screen and (min-width: 320px) {
+    select {
+        padding: 12px 20px;
+        margin: 8px 0;
+        font-size: 110%;
+    }
+}
+
+input:-moz-placeholder {
+    font-style: italic;
+}
+
+input::-moz-placeholder {
+    font-style: italic;
+}
+
+input:-ms-input-placeholder {
+    font-style: italic;
+}
+
+.animate-top {
+    position: relative;
+    -webkit-animation: animatetop 0.4s;
+    animation: animatetop 0.4s
+}
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+.closebtn {
+    -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
+    transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s
+}
+
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    margin: -75px 0 0 -75px;
+    border: 16px solid lightslategrey;
+    border-radius: 50%;
+    border-top: 16px solid red;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-height: 480px) {
+    #loader {
+        width: 50px;
+        height: 50px;
+        margin: -40px 0 0 -35px;
+        border: 10px solid lightslategrey;
+        border-radius: 50%;
+        border-top: 10px solid red;
+    }
+}
+
+
+#categoryList {
+    display: inline-grid;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0px;
+    padding: 0px;
+}
+
+.disabled-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    background-color: #949494 !important;
+    color: #fff;
+    border: 2px solid #949494 !important;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+#categoryList li:hover{
+    background-color: steelblue;
+    color: white;
+}
+
+@media only screen and (max-width: 320px) {
+    #categoryList li {
+        font-size: 80%;
+    }
+
+}
+
+#categoryList li:last-child {
+    border-bottom: none;
+}
+
+/**** Styles active categories ****/
+#categoryList li a {
+    display: block;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.selectycategorybox{
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding:60px;
+    width: fit-content;
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+    #categoryList li a {
+        padding: 0px;
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+    #categoryList {
+        display: block;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+}
+#categoryList li a:hover {
+    background-color: steelblue;
+    color: white;
+}
+
+#categoryList li a:active {
+    background-color: black;
+    color: white;
+}
+
+.buttonContainer{
+/* intentionally blank */
+}
+
+#playerName
+{
+    border: 1px solid steelblue;
+    padding: 10px 5px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+#playerForm{
+    background-color: #e4e4e4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px 30px 10px 30px;
+    width: 55%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+#playerEmail{
+    border: 1px solid slategrey;
+    padding: 10px 5px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+#playerGender{
+    border: 1px solid slategrey;
+    padding: 10px 5px;
+    border-radius: 6px;
+    width: 100%;
+}
+
+#guideInformation {
+    font-size: 100%;
+    width: 60%;
+    max-width: 300px;
+    margin: 10px;
+    margin-top: 250px;
+    float: left;
+}
+
+
+.popup-container {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    width: 60%;
+    max-width: 800px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.popup-container h3 {
+    color: rgba(119, 136, 153, 2.0);
+    margin-top: 0;
+}
+
+.popup-container p {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.popup-content {
+    display: flex;
+}
+
+.popup-icon {
+    width: 250px;
+    height: 100px;
+    margin: auto;
+}
+
+.popup-icon2 {
+    width: 150px;
+    height: 75px;
+    margin: auto;
+}
+
+/* hiding icons on smaller screen */
+@media screen and (max-width: 600px){
+    .popup-icon {
+       display: none;
+    }
+    .popup-icon2 {
+        display: none;
+    }
+}
+
+.popup-content .popup-icon {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.7s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.popup-content .popup-icon.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popup-content .popup-icon2 {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 1.2s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* State of the about image when it becomes visible */
+.popup-content .popup-icon2.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.wrapper {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+

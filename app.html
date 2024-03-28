@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="../TreasureHunt3/images/map2.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../TreasureHunt3/images/map2.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="teal">
-    <meta name="apple-mobile-web-app-title" content="Simple app">
-    <meta name="msapplication-TileImage" content="image/map2.png">
-    <meta name="msapplication-TileColor" content="#008080">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="icon"
+      href="./images/map2.png"
+      type="image/x-icon"
+    />
+    <link rel="apple-touch-icon" href="./images/map2.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="teal" />
+    <meta name="apple-mobile-web-app-title" content="Simple app" />
+    <meta name="msapplication-TileImage" content="image/map2.png" />
+    <meta name="msapplication-TileColor" content="#008080" />
 
     <title>TREASURE HUNT GAME - Select a Category</title>
-    <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="css/app.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
 
     <script src="js/app.js"></script>
     <script src="js/start.js"></script>
+  </head>
 
-</head>
+  <body>
+    <div id="loadingBar"></div>
 
-<body>
+    <div id="wrapper" class="wrapper"  onclick="hideWrapper()"></div>
 
-<div id="loader"></div>
-
-<div id="overlay" class="overlay" onclick="hideContent()"></div>
-
-<div id="container">
-
-    <header>
+    <div id="container">
+      <header>
         <h1>TREASURE HUNT GAME</h1>
         <p>Welcome to our adventure!</p>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#help" onclick="showContent('help')">Help</a></li>
-                <li><a href="#about" onclick="showContent('about')">About</a></li>
-            </ul>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+              <a href="#help-popup" onclick="showPopup('help-popup')">Help</a>
+            </li>
+            <li>
+              <a href="#about-popup" onclick="showPopup('about-popup')"
+                >About</a
+              >
+            </li>
+          </ul>
         </nav>
-    </header>
+      </header>
 
-    <div id="help" class="box">
-        <div class="box-content">
-            <img src="../TreasureHunt3/images/help.png" alt="Help Icon" class="box-icon">
-            <div>
-                <h3>Help</h3>
-                <p>Answer Questions: As you embark on your treasure hunt, you'll encounter various questions.</p>
-                <p>Use your knowledge and wit to answer them correctly and move closer to the treasure.</p>
-                <p>Use Hints: Stuck on a question? Use hints (if available) to get clues that will help you answer the questions.</p>
-                <p>Collect Treasures: Each correct answer will guide you to different treasures.</p>
-                <p>Collect as many as you can!</p>
-            </div>
+      <div id="help-popup" class="popup-container">
+        <div class="popup-content">
+          <img src="./images/help.png" alt="Help Icon" class="popup-icon" />
+          <div>
+            <h3>Help</h3>
+            <p>
+              Answer Questions: As you embark on your treasure hunt, you'll
+              encounter various questions.
+            </p>
+            <p>
+              Use your knowledge and wit to answer them correctly and move
+              closer to the treasure.
+            </p>
+            <p>
+              Use Hints: Stuck on a question? Use hints (if available) to get
+              clues that will help you answer the questions.
+            </p>
+            <p>
+              Collect Treasures: Each correct answer will guide you to different
+              treasures.
+            </p>
+            <p>Collect as many as you can!</p>
+          </div>
         </div>
+      </div>
+
+      <div id="about-popup" class="popup-container">
+        <div class="popup-content">
+          <img src="./images/about.png" alt="Help Icon" class="popup-icon2" />
+          <div>
+            <h3>About</h3>
+            <p>
+              Embark on an exciting journey through mysterious lands and
+              challenging puzzles. Our game is designed to test your knowledge,
+              wit, and adventure spirit.
+            </p>
+            <p>
+              Created by a dedicated team of puzzle enthusiasts and adventure
+              seekers, the Treasure Hunt Game offers a unique blend of learning
+              and fun.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="categoriesContainer" align="center">
+        <div class="AllCategories">
+          <ul class="categoryItem" id="categoryItem"></ul>
+        </div>
+      </div>
     </div>
-
-    <div id="about" class="box">
-        <div class="box-content">
-            <img src="../TreasureHunt3/images/about.png" alt="Help Icon" class="box-icon2">
-            <div>
-                <h3>About</h3>
-                <p>Embark on an exciting journey through mysterious lands and challenging puzzles. Our game is designed to test your knowledge, wit, and adventure spirit.</p>
-                <p>Created by a dedicated team of puzzle enthusiasts and adventure seekers, the Treasure Hunt Game offers a unique blend of learning and fun.</p>
-            </div>
-        </div>
-    </div>
-
-
-    <div id="content" align="center">
-
-        <div class="selectycategorybox">
-
-            <ul class="categoryList" id="categoryList"></ul>
-
-        </div>
-
-    </div> <!--CONTENT-->
-
-</div><!--CONTAINER-->
-
-</body>
+  </body>
 </html>

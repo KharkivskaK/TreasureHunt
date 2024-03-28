@@ -1,78 +1,103 @@
+// Initialize a new XMLHttpRequest object for asynchronous server request
 var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
+  var displayedCategories = 0;
+  var categoryList = document.getElementById("categoryItem");
 
-    var displayedCategories = 0;
-    var categoryList = document.getElementById("categoryList");
+  // Check if the request has completed
+  if (xhttp.readyState === 4) {
+    document.getElementById("loadingBar").style.display = "none";
+    document.getElementById("categoriesContainer").style.display = "block";
 
-    if (xhttp.readyState === 4 && xhttp.status === 200) {
-        var jsonData = JSON.parse(xhttp.responseText);
-        if (jsonData.status == "OK") {
-            var numOfCategories = jsonData.treasureHunts.length;
-            const dateTimeNow = (new Date).getTime();
+    // Check if the request was successful
+    if (xhttp.status === 200) {
+      var jsonData = JSON.parse(xhttp.responseText);
+      if (jsonData.status == "OK") {
+        const dateTimeNow = new Date().getTime();
+        var numOfCategories = jsonData.treasureHunts.length;
 
-            for (var i = 0; i < numOfCategories; i++) {
+        // Iterate through each category
+        for (var i = 0; i < numOfCategories; i++) {
+          var currentItem = jsonData.treasureHunts[i];
+          var startsOnTime = currentItem.startsOn;
+          var endsOnTime = currentItem.endsOn;
+          var isPublic = currentItem.visibility === "PUBLIC";
 
-                var currentItem = jsonData.treasureHunts[i];
-                var startsOnTime = currentItem.startsOn;
-                var endsOnTime = currentItem.endsOn;
+          if (isPublic) {
+            displayedCategories++;
 
-                var isPublic = jsonData.treasureHunts[i].visibility === "PUBLIC";
-
-                //Only show categories in the list if they are public:
-                if (isPublic) {
-
-                    displayedCategories++;
-
-                    //Display the category as joinable if its start time is now or later from now and its end time is now or before now:
-                    if ((dateTimeNow >= startsOnTime) && (dateTimeNow <= endsOnTime)) {
-                        //Add to select element
-                        var a = document.createElement("a");
-                        var newItem = document.createElement("li");
-                        a.textContent = currentItem.name;
-                        a.setAttribute('href', "register.html?cuuid=" + currentItem.uuid + "&cname=" + currentItem.name);
-                        newItem.appendChild(a);
-                        categoryList.appendChild(newItem);
-                    }//end if selectable entry
-
-                    //Display the category as non-joinable if its start time is later than now:
-                    else if (startsOnTime > dateTimeNow) {
-                        var newItem = document.createElement("li");
-                        newItem.className += "disabled disabled-button";
-                        var text = document.createTextNode(currentItem.name);
-                        newItem.appendChild(text);
-                        document.getElementById("categoryList").appendChild(newItem);
-                    }//end if non-selectable entry
-
-                    //Otherwise just show a console message, no need to show the category:
-                    else {
-                        console.log("Found an expired Treasure hunt: " + currentItem.name);
-                    }
-
-                }//end if isPublic
-            }//end for each category
-
-            //If no categories have been found, show a 'No categories' message:
-            if (displayedCategories < 1) {
-                var noCategoriesItem = document.createElement("li");
-                noCategoriesItem.style.color = "#888";
-                noCategoriesItem.innerHTML = "<i>No categories</i>";
-                categoryList.appendChild(noCategoriesItem);
+            // Check if the current time is within the start and end times of the category
+            if (dateTimeNow >= startsOnTime && dateTimeNow <= endsOnTime) {
+              var a = document.createElement("a");
+              var newItem = document.createElement("li");
+              a.textContent = currentItem.name;
+              a.setAttribute(
+                "href",
+                "register.html?cuuid=" +
+                  currentItem.uuid +
+                  "&cname=" +
+                  currentItem.name
+              );
+              newItem.appendChild(a);
+              categoryList.appendChild(newItem);
             }
-
-        } else if (statusItem != "OK") {
-            createSnackbar('! Problem while fetching the categories (status code: ' + xhttp.status + ') !');
-        } else {
-            createSnackbar('! Problem while contacting the server (status code: ' + xhttp.status + ') !');
+            else if (startsOnTime > dateTimeNow) {
+              // Create a new disabled list item if the category hasn't started yet
+              var newItem = document.createElement("li");
+              newItem.className += "disabled disabled-button";
+              newItem.textContent = currentItem.name;
+              categoryList.appendChild(newItem);
+            }
+            else {
+              // Log expired treasure hunts
+              console.log(
+                "Found an expired Treasure hunt: " + currentItem.name
+              );
+            }
+          }
         }
 
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("container").style.display = "block";
-    } else if (xhttp.readyState === 4) {
-        createSnackbar('! Problem while contacting the server (ready state: ' + xhttp.readyState + ', status code: ' + xhttp.status + ') !');
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("container").style.display = "block";
+        // Display a message if no categories are available to be displayed
+        if (displayedCategories < 1) {
+          var noCategoriesItem = document.createElement("li");
+          noCategoriesItem.style.color = "#888";
+          noCategoriesItem.innerHTML = "<i>No categories</i>";
+          categoryList.appendChild(noCategoriesItem);
+        }
+      }
+      else {
+        // Display a message if there was a problem fetching categories
+        displayMessage(
+          "! Problem while fetching the categories (status code: " +
+            xhttp.status +
+            ") !"
+        );
+      }
     }
+    else {
+      // Display a message if there was a problem contacting the server
+      displayMessage(
+        "! Problem while contacting the server (status code: " +
+          xhttp.status +
+          ") !"
+      );
+    }
+  }
+  else if (xhttp.readyState === 4) {
+    // This block appears redundant and may never be executed due to the previous condition also checking for readyState === 4
+    displayMessage(
+      "! Problem while contacting the server (ready state: " +
+        xhttp.readyState +
+        ", status code: " +
+        xhttp.status +
+        ") !"
+    );
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("categoriesContainer").style.display = "block";
+  }
 };
 
+// Prepare the GET request with the API endpoint to select categories
 xhttp.open("GET", API_SELECT_CATEGORY, true);
+// Sends the request to the server
 xhttp.send();

@@ -1,45 +1,57 @@
+/* Body styling */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
+    overflow-x: hidden;
 }
 
+/* Styling for all div elements */
 div {
-    background-color: #41B3A3;
+    background-color: rgba(119, 136, 153, 0.5);
 }
 
+/* Styling for the header */
 header {
-    color: black;
     padding: 13.3px;
+    padding-top: 40px;
     text-align: center;
-    width: 100%;
+    width: 90%;
+    margin-left:auto;
+    margin-right: auto;
 }
 
-
+/* Styling for header h1 */
 header h1 {
     margin: 0;
-    color: #66FCF1;
+    color: black;
+    font-size: 30px;
 }
 
+/* Styling for h2 */
 h2{
-    color: white;
-    border: 5px solid #45A29E;
+    color: black;
     outline-width: thick;
-    /*width: 100px;*/
     position: relative;
     text-align: center;
     padding: 0 10px;
 
 }
+
+/* Styling for section paragraphs */
 section p{
-    color: white;
-}
-header p {
-    font-size: 20px;
-    color: white;
+    color: black;
 }
 
+/* Styling for header paragraphs */
+header p {
+    font-size: 20px;
+    margin: 20px 0px;
+    color: black;
+}
+
+/* Styling for sections */
 section {
     padding: 30px;
     border-bottom: 1px solid black;
@@ -47,26 +59,31 @@ section {
     margin-top: 30px;
 }
 
+/* Styling for the footer */
 footer {
     margin-top: 20px;
     padding: 20px;
 }
 
-.social-media a {
+/* Styling for social media links */
+.social-links a {
     color: #007bff;
     text-decoration: none;
     margin: 0 10px;
 }
 
-.social-media a:hover {
+/* Styling for social media links on hover */
+.social-links a:hover {
     text-decoration: underline;
 }
 
+/* Styling for image container */
 .image-container {
     text-align: center; /* Center the image container */
     background-color: rgba(0, 0, 0, 0);
 }
 
+/* Styling for images within image container */
 .image-container img {
     width: 30%;
     height: 40%;
@@ -74,6 +91,7 @@ footer {
     margin: 0 auto; /* Center the image horizontally */
 }
 
+/* Styling for pseudo element before image container */
 .image-container::before {
     content: '';
     position: absolute;
@@ -84,6 +102,7 @@ footer {
     z-index: 1;
 }
 
+/* Styling for section icon */
 .section-icon {
     width: 50px;
     height: 50px;
@@ -94,13 +113,14 @@ footer {
     transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-
+/* Styling for visible section icons */
 .visible {
     opacity: 1;
     transform: none;
 }
 
-/*#menuButton {
+/* Styling for menu button */
+#menuBt {
     display: block;
     font-size: 34px;
     cursor: pointer;
@@ -108,65 +128,12 @@ footer {
     border: none;
     color: black;
     position: fixed;
-    top:30px;
-    left: 30px;
-}
-
-#burgerMenu {
-    display: none;
-    padding: 30px;
-    margin: auto;
-}
-
-!* Styling for the navigation bar list *!
-nav ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center; !* Center the list *!
-    width: 100%; !* Full width *!
-}
-
-nav a {
-    text-decoration: none;
-    color: black;
-    display: block;
-    font-size: 20px;
-    padding: 10px 120px;
-    transition: 0.5s all ease;
-    cursor: pointer;
-
-}
-
-ul li {
-    list-style: none;
-    text-align: center;
-    display: inline-block;
-}*/
-
-
-/*ul li a:hover {
-    color: darkblue ;
-}*/
-
-/*nav a:hover {
-    color: darkblue;
-    background-color: rgba(0, 0, 255, 0.1); !* Light background on hover for better visibility *!
-}*/
-
-#menuButton {
-    display: block;
-    font-size: 34px;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: black;
-    position: fixed;
-    top: 30px;
-    left: 30px;
+    top: 22px;
+    left: 22px;
     z-index: 1001;
 }
 
+/* Styling for burger menu */
 #burgerMenu {
     display: none;
     position: fixed;
@@ -174,11 +141,12 @@ ul li {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.9); /
+    background-color: rgba(0,0,0,0.9);
     color: white;
     z-index: 1000;
 }
 
+/* Styling for burger menu navigation ul */
 #burgerMenu nav ul {
     list-style-type: none;
     padding: 20px;
@@ -186,6 +154,7 @@ ul li {
     margin: 100px 0 0;
 }
 
+/* Styling for burger menu navigation links */
 #burgerMenu nav a {
     color: white;
     text-decoration: none;
@@ -195,29 +164,31 @@ ul li {
     transition: background-color 0.3s ease;
 }
 
+/* Styling for burger menu navigation links on hover or focus */
 #burgerMenu nav a:hover, #burgerMenu nav a:focus {
     background-color: #555;
 }
 
+/* Styling for burger menu navigation links on active */
 #burgerMenu nav a:active {
     background-color: #333;
 }
 
-#menuButton.menu-active {
+/* Styling for active menu button */
+#menuBt.menu-active {
     color: white;
 }
 
-
-/* Media query for screens with a maximum width of 768px */
+/* Media query for screens with a maximum width of 700px */
 @media (max-width: 700px) {
     .image-container img {
-        width: 80%; /* Larger relative size for smaller screens */
+        width:45%; /* Larger relative size for smaller screens */
     }
 }
 
-
-.THCButton {
-    background-color: #28a745;
+/* Styling for start button */
+.startButton {
+    background-color: royalblue;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -226,34 +197,52 @@ ul li {
     box-shadow: 2px 2px 10px black;
     transition: 1s;
     padding: 10px 20px;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 15px;
 }
 
-.THCButton:hover {
-    background-color: #218838;
+/* Styling for start button on hover */
+.startButton:hover {
+    background-color: steelblue;
 }
 
-.THCButton:active {
+/* Styling for start button on active */
+.startButton:active {
     background-color: rgba(0, 0, 0, 1);
 }
 
+/* Media query for screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
-    .THCButton {
+    .startButton {
         padding: 10px;
     }
 }
 
+/* Media query for screens with a maximum width of 490px */
+@media only screen and (max-width: 490px) {
+    header h1{
+        font-size: 25px;
+    }
+    header p{
+        font-size: 18px;
+    }
+
+    #menuBt {
+        top: 5px;
+        left: 5px;
+    }
+}
+
+/* Media query for screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
-    .THCButton {
+    .startButton {
         padding: 20px;
         font-size: 130%;
     }
 }
 
-
-
+/* Styling for modal */
 .modal {
     z-index: 3;
     display: none;
@@ -268,6 +257,7 @@ ul li {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
+/* Styling for modal content */
 .modal-content {
     margin: auto;
     position: relative;
@@ -276,6 +266,7 @@ ul li {
     width: 600px;
 }
 
+/* Styling for close button */
 .closebtn {
     text-decoration: none;
     float: right;
@@ -284,12 +275,14 @@ ul li {
     color: inherit;
 }
 
+/* Styling for close button on hover or focus */
 .closebtn:hover, .closebtn:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer
 }
 
+/* Media query for screens with a maximum width of 600px */
 @media (max-width: 600px) {
     .modal-content {
         margin: 0 10px;
@@ -301,6 +294,7 @@ ul li {
     }
 }
 
+/* Media query for screens with a maximum width of 768px */
 @media (max-width: 768px) {
     .modal-content {
         width: 500px;
@@ -311,20 +305,22 @@ ul li {
     }
 }
 
+/* Media query for screens with a minimum width of 993px */
 @media (min-width: 993px) {
     .modal-content {
         width: 900px;
     }
 }
 
+/* Styling for modal container */
 .modalContainer {
     padding: 0.01em 16px;
 }
 
+/* Styling for modal container after */
 .modalContainer:after {
     content: "";
     display: table;
     clear: both;
 }
-
 

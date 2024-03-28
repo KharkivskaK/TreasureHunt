@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="../TreasureHunt3/images/map2.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../TreasureHunt3/images/map2.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="teal">
-    <meta name="apple-mobile-web-app-title" content="Simple app">
-    <meta name="msapplication-TileImage" content="image/map2.png">
-    <meta name="msapplication-TileColor" content="#008080">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link rel="icon" href="./images/map2.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./images/map2.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="teal" />
+    <meta name="apple-mobile-web-app-title" content="Simple app" />
+    <meta name="msapplication-TileImage" content="image/map2.png" />
+    <meta name="msapplication-TileColor" content="#008080" />
 
-    <link href="css/appStyle2.css" rel="stylesheet" type="text/css"/>
+    <link href="css/leaderboard.css" rel="stylesheet" type="text/css" />
     <title>TREASURE HUNT GAME - Scoreboard</title>
     <script src="js/app.js"></script>
-    <script> var sessionID = fetchGetVariable("sessionID"); </script>
+    <script>
+      var sessionID = getQueryParamValue("sessionID");
+    </script>
     <script src="js/cookies.js"></script>
     <script src="js/leaderboard.js"></script>
-</head>
+  </head>
 
-<body onload="leaderboard();">
+  <body onload="createLeaderboard();">
+    <div id="loader"></div>
 
-<div id="loader"></div>
-
-<div id="container" align='center'>
-
-    <header>
+    <div id="container" align="center">
+      <header>
         <h1>TREASURE HUNT GAME</h1>
         <p>Welcome to our adventure!</p>
-    </header>
+      </header>
 
-    <div class="header">
-        <ul class="topNav">
-            <li style="float:right"><a href="index.html">Play Again</a></li>
-            <li style="float:right"><a onclick="location.reload();">Reload</a></li>
-            <div class="clearFloat"></div>
+      <div class="header">
+        <ul class="secondaryNav">
+          <li >
+            <a href="index.html">Play Again</a>
+          </li>
+          <li>
+            <a onclick="location.reload();">Reload</a>
+          </li>
+          <div class="clearFloat"></div>
         </ul>
-    </div>
+      </div>
 
-    <div class="scoreForm">
-        <p id="message" style="font-weight:700"></p>
-    </div>
+      <div class="roundContainer">
+        <p id="scoreFeedback"></p>
+      </div>
 
-    <h1> Scoreboard </h1>
-    <div class="scoreForm">
-        <ol id="scoreList"></ol>
+      <h1>Scoreboard</h1>
+      <div class="roundContainer">
+        <ol id="scoreboardList" style="padding: 0;"></ol>
+      </div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>

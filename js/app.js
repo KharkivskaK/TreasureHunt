@@ -1,11 +1,3 @@
-/********************************************************************************
-	File Name: 
-		app.js
-	Description:
-		Contains various utility functions used to correctly run the application.
-*********************************************************************************/
-
-//API Page URLs:
 const API_BASE_URL = "https://codecyprus.org/th/api/";
 const API_SELECT_CATEGORY = API_BASE_URL + "list";
 const API_START = API_BASE_URL + "start";
@@ -16,48 +8,34 @@ const API_SCORE = API_BASE_URL + "score";
 const API_LEADERBOARD = API_BASE_URL + "leaderboard";
 const API_LOCATION = API_BASE_URL + "location";
 
-//Question Types:
+// Constant definitions for question types
 const QUESTION_BOOLEAN = "BOOLEAN";
 const QUESTION_INTEGER = "INTEGER";
 const QUESTION_NUMERIC = "NUMERIC";
 const QUESTION_MCQ = "MCQ";
 const QUESTION_TEXT = "TEXT";
 
-/**
- * Checks if the text answer field is empty. Returns false if empty, true if filled.
- * @returns {boolean}
- */
-function validateAnswerField() {
-	return document.getElementById('answer').value != "";
+
+// Function to retrieve the value of a query parameter by name
+function getQueryParamValue(varName) {
+    var $_GET = {};
+
+    if (document.location.search !== '') {
+        var query = document.location.search.substring(1).split('&');
+
+        for (var i = 0; i < query.length; i++) {
+            var pair = query[i].split('=');
+            var key = decodeURIComponent(pair[0]);
+            var value = pair.length == 2 ? decodeURIComponent(pair[1]) : null;
+
+            $_GET[key] = value;
+        }
+    }
+    return $_GET[varName] || null;
 }
 
-/**
- * Retrieves a GET variable from the current URL.
- * @param varName
- * @returns {*} string?
- */
-function fetchGetVariable(varName) {
-	var $_GET = {};
-	if(document.location.toString().indexOf('?') !== -1) {
-    	var query = document.location
-                   .toString()
-                   .replace(/^.*?\?/, '')
-                   .replace(/#.*$/, '')
-                   .split('&');
 
-	    for(var i=0, l=query.length; i<l; i++) {
-    	   var aux = decodeURIComponent(query[i]).split('=');
-       		$_GET[aux[0]] = aux[1];
-    	}//end for
-	}//end if
-	return ($_GET[varName]);
-}
-
-/**
- * Creates a snackbar with a given message, duration and action and displays it.
- * Example Usage:
- * <button id="mySnackbar" onClick="createSnackbar('Text');"> Display Snackbar </button>
- */
+// Function to display snackbar notification
 var createSnackbar = (function() {
   var previous = null;
   return function(message, time, actionText, action) {
@@ -67,7 +45,7 @@ var createSnackbar = (function() {
     snackbar.className = 'paper-snackbar';
     snackbar.dismiss = function() {
       this.style.opacity = 0;
-    };//end dismiss()
+    };
     var text = document.createTextNode(message);
     snackbar.appendChild(text);
 	if (actionText) {
@@ -77,7 +55,7 @@ var createSnackbar = (function() {
       actionButton.innerHTML = actionText;
       actionButton.addEventListener('click', action);
       snackbar.appendChild(actionButton);
-    }//end if actionText
+    }
     setTimeout(function() {
       if (previous === this) previous.dismiss();
     }.bind(snackbar), time);//end setTimeout()
@@ -86,60 +64,43 @@ var createSnackbar = (function() {
       if (event.propertyName === 'opacity' && this.style.opacity == 0) {
         this.parentElement.removeChild(this);
         if (previous === this) previous = null;
-      }//end if
-    }.bind(snackbar));//end addEventListener
+      }
+    }.bind(snackbar));
 
     previous = snackbar;
     document.body.appendChild(snackbar);
     getComputedStyle(snackbar).bottom;
     snackbar.style.bottom = '0px';
     snackbar.style.opacity = 0.97;
-  };//end function
-})();//end createSnackbar()
+  };
+})();
 
-/**
- * Displays a modal with a given ID.
- * @param name
- */
+
+// Function to display a modal by name
 function showModal(name) {
 	document.getElementById(name).style.display='block'
 }
 
-/**
- * Hides a modal with a given ID.
- * @param name
- */
+// Function to hide a modal by name
 function hideModal(name) {
 	document.getElementById(name).style.display='none'
 }
 
-/**
- * Converts a UNIX timestamp to a time in HH:MM:SS:ms. Returns string.
- * @param finishTime
- * @returns {string|*}
- */
+// Function to convert a timestamp to a time string
 function timestampToTime(finishTime) {
-	var fts;
-	var milliseconds = finishTime % 1000;
-	var millisecondsS = milliseconds >= 100 ? milliseconds : milliseconds >= 10 ? "0" + milliseconds : "00" + milliseconds;
-	var seconds = Math.floor(finishTime / 1000);
-	var secondsS = (seconds % 60) < 10 ? "0" + (seconds % 60) : seconds % 60;
-	var minutes = Math.floor(seconds / 60);
-	var minutesS = (minutes % 60) < 10 ? "0" + (minutes % 60) : minutes % 60;
-	var hours = Math.floor(minutes / 60);
-	var hoursS = hours % 60;
-	
-	fts = finishTime == 0 ? "unfinished"
-	: hoursS + ":" + minutesS + ":" + secondsS + "." + millisecondsS;
-	
-	return fts;
+    if (finishTime === 0) return "unfinished";
+
+    const milliseconds = finishTime % 1000;
+    const seconds = Math.floor(finishTime / 1000) % 60;
+    const minutes = Math.floor(finishTime / (1000 * 60)) % 60;
+    const hours = Math.floor(finishTime / (1000 * 60 * 60)) % 24;
+
+    const formatNumber = num => num.toString().padStart(2, '0');
+    const formattedTime = `${formatNumber(hours)}:${formatNumber(minutes)}:${formatNumber(seconds)}.${milliseconds.toString().padStart(3, '0')}`;
+    return formattedTime;
 }
 
-/**
- * Returns a suffix according to a number (e.g "1st" if 1 or "2nd" if 2.)
- * @param i
- * @returns {string}
- */
+// Function to append the appropriate ordinal suffix to a number
 function getSuffix(i) {
     var j = i % 10, k = i % 100;
     if (j == 1 && k != 11) return i + "st";
@@ -148,34 +109,28 @@ function getSuffix(i) {
     return i + "th";	
 }
 
-/**
- * Detects if a device is an Android and displays a Google Play badge on index page
- */
-function isAndroid() {
-	var ua = navigator.userAgent.toLowerCase();
-	var isAndroid = ua.indexOf("android") > -1;
-	if(isAndroid) document.getElementById("gappsBadge").style.display = "block";
-}
+// Function to display a popup with a given ID
+function showPopup(id) {
+    document.getElementById('wrapper').style.display = 'block';
 
-
-
-function showContent(id) {
-    document.getElementById('overlay').style.display = 'block';
-    var boxes = document.getElementsByClassName('box');
-    for (var i = 0; i < boxes.length; i++) {
-        boxes[i].style.display = 'none';
+    var popups = document.getElementsByClassName('popup-container');
+    for (var i = 0; i < popups.length; i++) {
+        popups[i].style.display = 'none';
     }
     document.getElementById(id).style.display = 'block';
 }
 
-function hideContent() {
-    document.getElementById('overlay').style.display = 'none';
-    var boxes = document.getElementsByClassName('box');
-    for (var i = 0; i < boxes.length; i++) {
-        boxes[i].style.display = 'none';
+// Function to hide the overlay and all popups
+function hideWrapper() {
+    document.getElementById('wrapper').style.display = 'none';
+
+    var popups = document.getElementsByClassName('popup-container');
+    for (var i = 0; i < popups.length; i++) {
+        popups[i].style.display = 'none';
     }
 }
 
+// Initializes functionalities once the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -186,11 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, {
-        threshold: 0.1 // Adjust based on when you want the animation to start
+        threshold: 0.1
     });
 
-    // Target the images with both classes
-    const boxIcons = document.querySelectorAll('.box-content .box-icon, .box-content .box-icon2');
+    const boxIcons = document.querySelectorAll('.popup-content .popup-icon, .popup-content .popup-icon2');
     boxIcons.forEach(icon => {
         observer.observe(icon);
     });
