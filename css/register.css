@@ -1,3 +1,4 @@
+/* Styling for the body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     background-color: rgba(119, 136, 153, 0.5);
 }
 
+/* Styling for the header */
 header {
     background-color: rgba(119, 136, 153, 0.6);
     color: black;
@@ -18,11 +20,13 @@ header {
     height: 150px;
 }
 
+/* Styling for header h1 */
 header h1 {
     margin: 0;
     color: black;
 }
 
+/* Styling for header paragraphs */
 header p {
     font-size: 20px;
     color: black;
@@ -44,16 +48,18 @@ nav a {
     padding: 10px;
 }
 
+/* Styling for list items */
 ul li {
     list-style: none;
     text-align: right;
 }
 
-
+/* Styling for navigation links on hover */
 ul li a:hover {
     color: darkblue ;
 }
 
+/* Media query for screens with a maximum width of 768px */
 @media (max-width: 768px) {
     nav ul {
         display: none;
@@ -84,6 +90,7 @@ ul li a:hover {
     }
 }
 
+/* Styling for menu button */
 #menuBt {
     display: none;
     position: absolute;
@@ -149,26 +156,30 @@ ul li a:hover {
     }
 }
 
-
+/* Clear float style */
 .clearFloat {
     clear: both;
 }
 
+/* Styling for container */
 #container {
     display: block;
     margin-top: 60px;
 }
 
+/* Media query for screens with a maximum width of 240px */
 @media only screen and (max-width: 240px) {
     #container {
         margin-top: 50px
     }
 }
 
+/* Styling for question */
 #question {
     text-align: center;
 }
 
+/* Styling for header */
 .header {
     width: 100%;
     position: fixed;
@@ -176,6 +187,7 @@ ul li a:hover {
     z-index: 1000;
 }
 
+/* Styling for guide information */
 .guideInfo {
     border: 2px solid red;
     background-color: white;
@@ -185,50 +197,58 @@ ul li a:hover {
     max-width: 500px;
 }
 
+/* Media query for screens with a maximum width of 320px */
 @media only screen and (max-width: 320px) {
     p {
         font-size: 70%;
     }
 }
 
+/* Styling for message */
 #message {
     color: red;
     text-decoration: blink;
 }
 
+/* Styling for content */
 .content {
 }
 
+/* Styling for disabled elements */
 .disabled {
     color: grey;
     cursor: not-allowed;
     padding: 5px;
 }
 
+/* Media query for screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
     .disabled {
         padding: 15px;
     }
 }
 
+/* Styling for score */
 #score {
     color: orange;
     float: left;
     padding-left: 3px;
 }
 
+/* Styling for paragraphs */
 p {
     transition: 0.5s;
     animation: ease-in;
 }
 
-
+/* Media query for screens with a maximum width of 320px */
 @media only screen and (max-width: 320px) {
     small {
         font-size: 70%;
     }
 }
 
+/* Styling for start button */
 .start{
     background-color: lawngreen;
     text-align: center;
@@ -244,10 +264,12 @@ p {
     border-radius: 15px;
 }
 
+/* Styling for start button on hover */
 .start:hover {
     background-color: limegreen;
 }
 
+/* Styling for top navigation list */
 ul.topNav {
     list-style-type: none;
     margin: 0;
@@ -257,17 +279,20 @@ ul.topNav {
     background-color: #e7e7e7;
 }
 
+/* Styling for top navigation list items */
 ul.topNav li {
     float: left;
     border-left: 1px solid #e7e7e7;
 }
 
+/* Media query for screens with a maximum width of 320px */
 @media only screen and (max-width: 320px) {
     ul.topNav li {
         font-size: 70%;
     }
 }
 
+/* Styling for top navigation links */
 ul.topNav li a {
     display: block;
     color: black;
@@ -278,28 +303,33 @@ ul.topNav li a {
     font-weight: 700;
 }
 
+/* Styling for top navigation links on hover */
 ul.topNav li a:hover:not(.active) {
     background-color: lightslategrey;
 }
 
+/* Styling for top navigation images */
 .topNavImage {
     float: left;
     margin: 5px;
     margin-right: 2px;
 }
 
+/* Media query for screens with a maximum width of 320px */
 @media only screen and (max-width: 320px) {
     .topNavImage {
         max-height: 20px;
     }
 }
 
+/* Styling for categories bubble */
 #categoriesBubble {
     width: 60%;
     margin: 10px;
     max-width: 250px;
 }
 
+/* Styling for question bubble */
 #questionBubble {
     font-size: 100%;
     width: 60%;
@@ -307,6 +337,7 @@ ul.topNav li a:hover:not(.active) {
     margin: 10px;
 }
 
+/* Styling for guide */
 .guide{
     margin: 5px;
     display: flex;
@@ -316,34 +347,42 @@ ul.topNav li a:hover:not(.active) {
     height: 160px;
 }
 
+/* Styling for player registration form */
 .playerRegisterForm {
     margin-top: 150px;
 }
 
+/* Styling for multiple choice question form */
 #mcqForm {
     display: none;
 }
 
+/* Styling for text form */
 #textForm {
     display: none;
 }
 
+/* Styling for boolean form */
 #booleanForm {
     display: none;
 }
 
+/* Styling for integer form */
 #integerForm {
     display: none;
 }
 
+/* Styling for number form */
 #numberForm {
     display: none;
 }
 
+/* Styling for player form */
 #playerForm {
     text-align: center;
 }
 
+/* Styling for text inputs */
 input[type=text] {
     width: 95%;
     background-color: white;
@@ -356,6 +395,7 @@ input[type=text] {
     max-width: 400px;
 }
 
+/* Styling for number inputs */
 input[type=number] {
     width: 95%;
     background-color: white;;
@@ -368,10 +408,12 @@ input[type=number] {
     max-width: 400px;
 }
 
+/* Styling for inputs on focus */
 input:focus {
     outline: 0;
 }
 
+/* Media query for screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     input[type=text] {
         padding: 12px 20px;
@@ -386,6 +428,7 @@ input:focus {
     }
 }
 
+/* Styling for email inputs */
 input[type=email] {
     width: 95%;
     background-color: transparent;
@@ -398,6 +441,7 @@ input[type=email] {
     max-width: 400px;
 }
 
+/* Media query for screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     input[type=email] {
         padding: 12px 20px;
@@ -406,10 +450,12 @@ input[type=email] {
     }
 }
 
+/* Styling for inputs */
 input {
     transition: 1s;
 }
 
+/* Styling for select inputs */
 select {
     width: 95%;
     background-color: transparent;
@@ -418,6 +464,7 @@ select {
     padding: 2px 4px;
 }
 
+/* Media query for screens with a minimum width of 320px */
 @media only screen and (min-width: 320px) {
     select {
         padding: 12px 20px;
@@ -426,24 +473,29 @@ select {
     }
 }
 
+/* Styling for input placeholders in Mozilla Firefox */
 input:-moz-placeholder {
     font-style: italic;
 }
 
+/* Styling for input placeholders */
 input::-moz-placeholder {
     font-style: italic;
 }
 
+/* Styling for input placeholders in Internet Explorer */
 input:-ms-input-placeholder {
     font-style: italic;
 }
 
+/* Styling for animate top */
 .animate-top {
     position: relative;
     -webkit-animation: animatetop 0.4s;
     animation: animatetop 0.4s
 }
 
+/* Keyframes for animate top */
 @keyframes animatetop {
     from {
         top: -300px;
@@ -456,11 +508,13 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Styling for close button */
 .closebtn {
     -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s;
     transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s
 }
 
+/* Styling for loader */
 #loader {
     position: absolute;
     left: 50%;
@@ -476,6 +530,7 @@ input:-ms-input-placeholder {
     animation: spin 2s linear infinite;
 }
 
+/* Keyframes for spin */
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -485,6 +540,7 @@ input:-ms-input-placeholder {
     }
 }
 
+/* Media query for screens with a maximum height of 480px */
 @media (max-height: 480px) {
     #loader {
         width: 50px;
@@ -496,7 +552,7 @@ input:-ms-input-placeholder {
     }
 }
 
-
+/* Styling for category list */
 #categoryList {
     display: inline-grid;
     gap: 10px;
@@ -507,6 +563,7 @@ input:-ms-input-placeholder {
     padding: 0px;
 }
 
+/* Styling for disabled button */
 .disabled-button {
     display: inline-block;
     padding: 10px 20px;
@@ -518,11 +575,14 @@ input:-ms-input-placeholder {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
+
+/* Styling for category list items on hover */
 #categoryList li:hover{
     background-color: steelblue;
     color: white;
 }
 
+/* Media query for screens with a maximum width of 320px */
 @media only screen and (max-width: 320px) {
     #categoryList li {
         font-size: 80%;
@@ -530,11 +590,12 @@ input:-ms-input-placeholder {
 
 }
 
+/* Styling for last child of category list items */
 #categoryList li:last-child {
     border-bottom: none;
 }
 
-/**** Styles active categories ****/
+/* Styles active categories */
 #categoryList li a {
     display: block;
     color: white;
@@ -543,6 +604,7 @@ input:-ms-input-placeholder {
     transition: 0.5s;
 }
 
+/* Styling for select category box */
 .selectycategorybox{
     background-color: #e4e4e4;
     border-radius: 10px;
@@ -552,12 +614,12 @@ input:-ms-input-placeholder {
     margin-top: 20px;
 }
 
+/* Media query for screens with a minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
     #categoryList li a {
         padding: 0px;
     }
 }
-
 
 @media only screen and (max-width: 767px) {
     #categoryList {
@@ -581,7 +643,7 @@ input:-ms-input-placeholder {
 }
 
 .buttonContainer{
-/* intentionally blank */
+    /* intentionally blank */
 }
 
 #playerName
@@ -625,7 +687,7 @@ input:-ms-input-placeholder {
     float: left;
 }
 
-
+/* Styling for popup container */
 .popup-container {
     display: none;
     position: fixed;
@@ -644,65 +706,74 @@ input:-ms-input-placeholder {
     font-family: Arial, sans-serif;
 }
 
+/* Styling for popup container h3 */
 .popup-container h3 {
     color: rgba(119, 136, 153, 2.0);
     margin-top: 0;
 }
 
+/* Styling for popup container paragraphs */
 .popup-container p {
     line-height: 1.2;
     margin-bottom: 1rem;
 }
 
+/* Styling for popup content */
 .popup-content {
     display: flex;
 }
 
+/* Styling for popup icon */
 .popup-icon {
     width: 250px;
     height: 100px;
     margin: auto;
 }
 
+/* Styling for popup icon2 */
 .popup-icon2 {
     width: 150px;
     height: 75px;
     margin: auto;
 }
 
-/* hiding icons on smaller screen */
+/* Styling for popup icon on smaller screens */
 @media screen and (max-width: 600px){
     .popup-icon {
-       display: none;
+        display: none;
     }
     .popup-icon2 {
         display: none;
     }
 }
 
+/* Styling for popup content popup icon */
 .popup-content .popup-icon {
     opacity: 0;
     transform: scale(0.85);
     transition: opacity 0.7s ease-in-out, transform 0.3s ease-in-out;
 }
 
+/* Styling for popup content visible popup icon */
 .popup-content .popup-icon.visible {
     opacity: 1;
     transform: scale(1);
 }
 
+/* Styling for popup content popup icon2 */
 .popup-content .popup-icon2 {
     opacity: 0;
     transform: translateX(-20px);
     transition: opacity 1.2s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* State of the about image when it becomes visible */
+/* Styling for popup content visible popup icon2 */
 .popup-content .popup-icon2.visible {
     opacity: 1;
     transform: translateX(0);
 }
 
+/* Styling for wrapper */
 .wrapper {
     display: none;
     position: fixed;
