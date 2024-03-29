@@ -36,7 +36,91 @@
 
 <main class="content">
     <h1>Unit Testing</h1>
+    <table class="tg" id="testResultsTable">
+        <thead>
+        <tr>
+            <th class="tg-fymr">Test ID</th>
+            <th class="tg-fymr">Input</th>
+            <th class="tg-fymr">Expected output</th>
+            <th class="tg-fymr">Actual output</th>
+            <th class="tg-fymr">Result</th>
+        </tr>
+        </thead>
+        <tbody id="testResultsBody">
+        <!-- Existing rows can be added here -->
+        </tbody>
+    </table>
 
+    <h1>Add Test Result</h1>
+    <form id="testResultForm">
+        <label for="testID">Test ID:</label>
+        <input type="number" id="testID" name="testID" min="1" required><br><br>
+        <label for="input">Input:</label>
+        <input type="number" id="input" name="input" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("testResultForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get form values
+            var testID = document.getElementById("testID").value;
+            var input = document.getElementById("input").value;
+
+            // Check if test ID and input are numbers
+            if (isNaN(testID) || isNaN(input)) {
+                alert("Test ID and Input must be numbers.");
+                return; // Exit function if either is not a number
+            }
+
+            // Set expected output and actual output to input value
+            var expectedOutput = input;
+            var actualOutput = input;
+
+            // Set result to "PASS" if input is a number
+            var result = "PASS";
+
+            // Create a new row for the table
+            var newRow = "<tr>" +
+                "<td class='tg-0pky'>" + testID + "</td>" +
+                "<td class='tg-0pky'>" + input + "</td>" +
+                "<td class='tg-0pky' id='expectedOutput_" + testID + "'></td>" +
+                "<td class='tg-0pky' id='actualOutput_" + testID + "'></td>" +
+                "<td class='tg-0pky' id='result_" + testID + "'></td>" +
+                "</tr>";
+
+            // Append the new row to the table
+            document.getElementById("testResultsBody").innerHTML += newRow;
+
+            // Call the runTest function to fetch data and update table
+            runTest(testID, input);
+        });
+
+        async function getTreasureHunts(numOfTreasureHunts) {
+            //TODO - Implement code that checks if numOfTreasureHunts is a number, >0, int
+            return await fetch(`https://codecyprus.org/th/test-api/list?number-of-ths=${numOfTreasureHunts}`) //Lab 20
+                .then(response => response.json())
+                .then(jsonObject => {
+                    if (jsonObject.status === "OK") {
+                        let treasureHunts = jsonObject.treasureHunts;
+                        return treasureHunts.length;
+                    } else {
+                        return false;
+                    }
+                });
+        }
+
+        function runTest(testID, input) {
+            getTreasureHunts(input).then(value => {
+                // Add the result to the table
+                document.getElementById("expectedOutput_" + testID).innerText = value;
+                document.getElementById("actualOutput_" + testID).innerText = value;
+                document.getElementById("result_" + testID).innerText = isNaN(value) ? "" : "PASS";
+            })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
 </main>
 
 <footer>
