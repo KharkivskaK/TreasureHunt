@@ -1,0 +1,32 @@
+h1{
+    text-align: center;
+}
+/* Styling the table */
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    align-content: center;
+    text-align: center;
+}
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+th {
+    background-color: rgba(119, 136, 153, 0.6);
+    color: #ffffff;
+}
+tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+/* Styling for the tick column */
+.tick {
+    color: green;
+}
+
