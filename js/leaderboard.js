@@ -83,7 +83,7 @@ function toggleLoadingIndicator(show) {
   }
 }
 
-function getScoreboardAsPopup() {
+/*function getScoreboardAsPopup() {
   let sessionID;
   const currentPlayerName = getCookie('COOKIE_PLAYER_NAME');
 
@@ -163,7 +163,8 @@ function getScoreboardAsPopup() {
   // Send request to retrieve leaderboard data
   xhttp.open("GET", `${API_LEADERBOARD}?session=${sessionID}&sorted`, true);
   xhttp.send();
-}
+}*/
+
 // Helper function to create a DOM element with options
 function createElementWithClass(tag, className, innerHTML = '') {
   const element = document.createElement(tag);
@@ -193,7 +194,7 @@ data.forEach((playerData, index) => {
   const timeFinished = createElementWithClass("small", "timeFinished", `<br>Time since start: ${timestampToTime(playerData.completionTime)}`);
   const clearfloat = createElementWithClass("div", "clearFloat");
 
-  if (rank === 11) entry.style.backgroundColor = "#2ed655";
+  if (rank === 11) entry.style.backgroundColor = "lawngreen";
 
   entry.appendChild(playerName);
   entry.appendChild(rankElement);
