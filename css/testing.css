@@ -1,6 +1,276 @@
+/* Styling for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: rgba(119, 136, 153, 0.5);
+}
+
+/* Styling for the header */
+header {
+    background-color: rgba(119, 136, 153, 0.6);
+    color: black;
+    padding: 2px;
+    padding-top:8px;
+    position: fixed;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    height: 150px;
+}
+
+/* Styling for header h1 */
+header h1 {
+    margin: 0;
+    color: black;
+}
+
+/* Styling for header paragraphs */
+header p {
+    font-size: 20px;
+    color: black;
+}
+
+/* Styling for the navigation bar list */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for navigation links */
+nav a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    padding: 10px;
+}
+
+/* Styling for list items */
+ul li {
+    list-style: none;
+    text-align: right;
+}
+
+/* Styling for navigation links on hover */
+ul li a:hover {
+    color: darkblue ;
+}
+
+/* Media query for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #333;
+    }
+    nav ul li {
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid white;
+    }
+    nav ul li a {
+        display: block;
+        padding: 10px;
+        color: white;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        padding: 10px;
+        background: #333;
+        color: white;
+    }
+}
+
+/* Styling for menu button */
+#menuBt {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Styles for mobile devices */
+@media (max-width: 600px) {
+    #menuBt {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        font-size: 1em;
+    }
+
+    header{
+        height: fit-content;
+    }
+
+    header h1{
+        font-size: 25px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #333;
+        padding: 0
+    }
+
+    nav ul.active {
+        display: flex;
+        margin-top: 40px;
+        background-color: black;
+    }
+
+    nav ul li {
+        text-align: left;
+        display: block;
+    }
+
+    nav ul li a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+    }
+}
+
+.table-result {
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+th{
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    position: relative;
+}
+td{
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    position: relative;
+}
+
+/* Centering all text */
+body,
+header,
+nav,
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+table,
+th,
+td,
+a,
+footer,
+section,
+div,
+input,
+select,
+option,
+textarea {
+    text-align: center;
+}
+
+ul.centered-list {
+    list-style-type: disc;
+    text-align: center;
+    padding: 0;
+}
+
+ul.centered-list li {
+    display: inline-block;
+    margin: 0 10px;
+}
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+/* CSS for styling table headers */
+th {
+    padding: 8px;
+}
+
+/* CSS for styling table cells */
+td {
+    padding: 8px;
+}
+
+
+/* Styling for image container */
+.image-container {
+    text-align: center; /* Center the image container */
+    background-color: rgba(0, 0, 0, 0);
+}
+
+/* Styling for images within image container */
+.image-container img {
+    width: 30%;
+    height: 40%;
+    display: inline-block;
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Styling for pseudo element before image container */
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 13.5%;
+    left: 0;
+    right: 0;
+    bottom: 30%;
+    z-index: 1;
+}
+
+/* Styling for section icon */
+.section-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Styling for visible section icons */
+.visible {
+    opacity: 1;
+    transform: none;
+}
+
 h1{
     text-align: center;
 }
+
 /* Styling the table */
 table {
     width: 60%;
@@ -13,20 +283,33 @@ table {
     align-content: center;
     text-align: center;
 }
+
 th, td {
     padding: 12px 15px;
     border: 1px solid #ddd;
     text-align: center;
 }
+
 th {
     background-color: rgba(119, 136, 153, 0.6);
-    color: #ffffff;
+    color: white;
 }
+
 tr:nth-child(even) {
     background-color: #f3f3f3;
 }
+
 /* Styling for the tick column */
 .tick {
     color: green;
 }
 
+/* Centering the table specifically */
+.table-result,
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
